@@ -291,89 +291,6 @@
       color: var(--muted);
     }
 
-    /* ── Experience ───────────────────────────────────────────── */
-    #experience { background: var(--surface); }
-
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-
-    .exp-item {
-      border-left: 2px solid var(--border);
-      padding: 0 0 40px 28px;
-      position: relative;
-    }
-
-    .exp-item:last-child { padding-bottom: 0; }
-
-    .exp-item::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: 6px;
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    .exp-header {
-      margin-bottom: 6px;
-    }
-
-    .exp-role {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--heading);
-    }
-
-    .exp-company {
-      font-size: 14px;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    .exp-meta {
-      font-size: 12px;
-      color: var(--muted);
-      font-family: var(--mono);
-      margin-bottom: 12px;
-    }
-
-    .exp-bullets {
-      list-style: none;
-    }
-
-    .exp-bullets li {
-      font-size: 14px;
-      color: var(--text);
-      margin-bottom: 6px;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .exp-bullets li::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
-
-    .exp-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 12px;
-    }
-
-    .exp-tag {
-      font-size: 11px;
-      font-family: var(--mono);
-      background: var(--bg);
-      color: var(--muted);
-      padding: 2px 8px;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-    }
-
     /* ── Skills ───────────────────────────────────────────────── */
     #skills { background: var(--bg); }
 
@@ -578,8 +495,315 @@
     .t-out-key  { color: var(--muted); }
     .t-out-val  { color: #00ff41; }
 
+    /* ── Experience: one cmd window per role ──────────────────── */
+    .exp-help {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin: -24px 0 28px;
+      line-height: 1.9;
+    }
+
+    .exp-help kbd {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: #001a00;
+      border: 1px solid #1d4d1d;
+      border-bottom-width: 2px;
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+
+    .job-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .job-term {
+      background: #000;
+      border: 1px solid #1a3a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+    }
+
+    .job-term:hover,
+    .job-term:focus-visible {
+      border-color: var(--accent2);
+      box-shadow: 0 0 22px rgba(0,255,65,.10);
+    }
+
+    .job-term:focus-visible { border-color: var(--accent); }
+    .job-term.open { border-color: #245924; }
+
+    .job-body {
+      padding: 16px 20px 18px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .job-cmd {
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    .job-kv {
+      display: flex;
+      gap: 10px;
+      line-height: 1.95;
+      flex-wrap: wrap;
+    }
+
+    .jk {
+      color: var(--muted);
+      width: 78px;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+
+    .jk::after { content: ':'; }
+
+    .jv { color: var(--text); font-size: 13px; }
+
+    .jv-hi {
+      color: var(--heading);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .job-badge {
+      color: #000;
+      background: var(--accent);
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-left: 9px;
+      vertical-align: middle;
+    }
+
+    .job-ask {
+      color: var(--accent);
+      font-size: 12px;
+      margin-top: 14px;
+      user-select: none;
+    }
+
+    .job-ask b { color: #000; background: var(--accent); padding: 0 5px; border-radius: 2px; }
+
+    .job-caret {
+      animation: blink 1s step-start infinite;
+      margin-left: 2px;
+    }
+
+    .job-term.open .job-ask { color: var(--muted); }
+    .job-term.open .job-ask b { color: #000; background: var(--muted); }
+    .job-term.open .job-caret { display: none; }
+
+    .job-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease;
+    }
+
+    .job-term.open .job-detail { max-height: 900px; }
+
+    .job-echo {
+      color: var(--accent);
+      font-size: 12px;
+      margin: 14px 0 10px;
+    }
+
+    .job-bullets { list-style: none; margin-bottom: 12px; }
+
+    .job-bullets li {
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .job-bullets li::before {
+      content: '\203A';
+      position: absolute;
+      left: 4px;
+      color: var(--accent2);
+    }
+
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .job-tags span {
+      font-size: 10px;
+      color: var(--muted);
+      border: 1px solid #122c12;
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+
+    .job-eof { color: #2c552c; font-size: 11px; }
+
+    /* ── Welcome banner ───────────────────────────────────────── */
+    .hero-welcome {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      text-shadow: 0 0 12px rgba(0,255,65,.45);
+    }
+
+    .hero-welcome::before { content: '> '; color: var(--accent2); }
+
+    .hero-welcome .wc {
+      animation: blink 1s step-start infinite;
+      font-weight: bold;
+    }
+
+    /* ── Boot warning dialog ──────────────────────────────────── */
+    .sys-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 1;
+      transition: opacity .3s ease;
+    }
+
+    .sys-overlay.hide { opacity: 0; pointer-events: none; }
+
+    .sys-dialog {
+      width: 100%;
+      max-width: 480px;
+      background: #000;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,255,65,.28), 0 0 3px rgba(0,255,65,.6);
+      animation: sysIn .28s ease-out;
+    }
+
+    @keyframes sysIn {
+      from { opacity: 0; transform: translateY(-14px) scale(.97); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .sys-bar {
+      background: #00250b;
+      border-bottom: 1px solid #124d12;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: .06em;
+    }
+
+    .sys-x {
+      color: var(--accent);
+      background: none;
+      border: 1px solid #124d12;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1;
+      padding: 2px 7px;
+      cursor: pointer;
+    }
+
+    .sys-x:hover { background: var(--accent); color: #000; }
+
+    .sys-body {
+      padding: 22px 22px 6px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-family: var(--mono);
+    }
+
+    .sys-icon {
+      font-size: 30px;
+      line-height: 1;
+      color: var(--accent);
+      flex-shrink: 0;
+      text-shadow: 0 0 14px rgba(0,255,65,.5);
+    }
+
+    .sys-head {
+      color: var(--heading);
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .sys-text {
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.85;
+    }
+
+    .sys-text .hi { color: var(--accent); }
+
+    .sys-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      padding: 12px 22px 0;
+      line-height: 1.8;
+    }
+
+    .sys-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      padding: 16px 22px 20px;
+    }
+
+    .sys-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 8px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #1d4d1d;
+      background: #000;
+      color: var(--text);
+      transition: background .15s, color .15s, border-color .15s;
+    }
+
+    .sys-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .sys-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .sys-btn.primary:hover { opacity: .85; color: #000; }
+
     /* ── Responsive ───────────────────────────────────────────── */
     @media (max-width: 680px) {
+      .job-body { padding: 14px 14px 16px; font-size: 12px; }
+      .jk { width: 100%; }
       .hero-inner { flex-direction: column; text-align: center; }
       .hero-name  { font-size: 34px; }
       .hero-actions { justify-content: center; }
@@ -592,6 +816,36 @@
   </style>
 </head>
 <body>
+
+<!-- ── BOOT WARNING DIALOG ─────────────────────────────────────── -->
+<div class="sys-overlay" id="sysOverlay" role="dialog" aria-modal="true" aria-labelledby="sysHead">
+  <div class="sys-dialog">
+    <div class="sys-bar">
+      <span>&#9888; SYSTEM NOTICE &mdash; sec-advisory.exe</span>
+      <button class="sys-x" id="sysX" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="sys-body">
+      <div class="sys-icon">&#9888;</div>
+      <div>
+        <div class="sys-head" id="sysHead">CAUTION: SECURED ZONE AHEAD</div>
+        <div class="sys-text">
+          You are entering <span class="hi">Dinesh's Personal Hacking Studio</span>.<br>
+          All packets on this segment are inspected, logged, and
+          <span class="hi">thoroughly over-engineered</span>.<br>
+          Firewalls are clustered. Routes are converged. Proceed with caution.
+        </div>
+      </div>
+    </div>
+    <div class="sys-meta">
+      Relax &mdash; this is a portfolio, not an actual intrusion.<br>
+      No systems were harmed in the making of this website.
+    </div>
+    <div class="sys-actions">
+      <button class="sys-btn" id="sysAbort">Abort</button>
+      <button class="sys-btn primary" id="sysOk">Proceed &rarr;</button>
+    </div>
+  </div>
+</div>
 
 <!-- ── NAV ─────────────────────────────────────────────────────── -->
 <nav>
@@ -611,6 +865,7 @@
     <div class="hero-inner">
       <div class="hero-avatar">DM</div>
       <div>
+        <div class="hero-welcome">Welcome to Dinesh's Personal Hacking Studio<span class="wc">_</span></div>
         <div class="hero-badge">Chicago, IL</div>
         <h1 class="hero-name">Dinesh M</h1>
         <p class="hero-title">Network Manager &nbsp;·&nbsp; CCIE &nbsp;|&nbsp; PCNSE &nbsp;|&nbsp; PMP &nbsp;|&nbsp; F5 CTS</p>
@@ -726,218 +981,391 @@
 <section id="experience">
   <div class="container">
     <p class="section-label">01 / experience</p>
-    <h2 class="section-title"><span>// </span>traceroute --target=career</h2>
-    <div class="exp-list">
+    <h2 class="section-title"><span>// </span>experience</h2>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Network Manager</div>
-          <div class="exp-company">City of Tallahassee</div>
-          <div class="exp-meta">Jun 2026 — Present · Tallahassee, FL</div>
+    <p class="exp-help">10 roles &middot; 2014 &rarr; present. Click a window, or focus it and press
+      <kbd>Y</kbd> / <kbd>Enter</kbd>, to print the full log.</p>
+
+    <div class="job-stack">
+      <div class="job-term" data-slug="city-of-tallahassee" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Network Manager at City of Tallahassee — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 01</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Leading network operations and infrastructure management for the City of Tallahassee.</li>
-          <li>Overseeing enterprise-wide network strategy, upgrades, and team coordination.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Government</span>
-          <span class="exp-tag">Network Management</span>
-          <span class="exp-tag">Enterprise Infrastructure</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 01</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Jun 2026 — Present</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Tallahassee, FL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">City of Tallahassee<span class="job-badge">ACTIVE</span></span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Network Manager</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type city-of-tallahassee.log</div>
+            <ul class="job-bullets">
+                <li>Leading network operations and infrastructure management for the City of Tallahassee.</li>
+                <li>Overseeing enterprise-wide network strategy, upgrades, and team coordination.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Government</span>
+                <span>Network Management</span>
+                <span>Enterprise Infrastructure</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Senior Network Security Engineer</div>
-          <div class="exp-company">CTS Corporation</div>
-          <div class="exp-meta">Sep 2025 — Jul 2026 · United States</div>
+      <div class="job-term" data-slug="cts-corporation" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Senior Network Security Engineer at CTS Corporation — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 02</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Architected Cisco and Meraki switching environments using VLAN, LAN, and SD-WAN for enterprise connectivity.</li>
-          <li>Implemented FortiGate firewalls via FortiManager and FortiAnalyzer to manage HA, VPN routing, and centralized security logging.</li>
-          <li>Secured production environments by integrating CrowdStrike, IDS/IPS, and RADIUS controls across managed service infrastructures.</li>
-          <li>Executed advanced troubleshooting via Wireshark and Splunk, maintaining 99.9% uptime for critical business systems.</li>
-          <li>Coordinated with MSP partners and internal stakeholders on complex change requests and on-call incident responses.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Cisco / Meraki</span>
-          <span class="exp-tag">FortiGate</span>
-          <span class="exp-tag">CrowdStrike</span>
-          <span class="exp-tag">SD-WAN</span>
-          <span class="exp-tag">Splunk</span>
-          <span class="exp-tag">Wireshark</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 02</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Sep 2025 — Jul 2026</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">United States</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">CTS Corporation</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Senior Network Security Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type cts-corporation.log</div>
+            <ul class="job-bullets">
+                <li>Architected Cisco and Meraki switching environments using VLAN, LAN, and SD-WAN for enterprise connectivity.</li>
+                <li>Implemented FortiGate firewalls via FortiManager and FortiAnalyzer to manage HA, VPN routing, and centralized security logging.</li>
+                <li>Secured production environments by integrating CrowdStrike, IDS/IPS, and RADIUS controls across managed service infrastructures.</li>
+                <li>Executed advanced troubleshooting via Wireshark and Splunk, maintaining 99.9% uptime for critical business systems.</li>
+                <li>Coordinated with MSP partners and internal stakeholders on complex change requests and on-call incident responses.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Cisco / Meraki</span>
+                <span>FortiGate</span>
+                <span>CrowdStrike</span>
+                <span>SD-WAN</span>
+                <span>Splunk</span>
+                <span>Wireshark</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Senior Network Architect</div>
-          <div class="exp-company">OSF HealthCare</div>
-          <div class="exp-meta">Jan 2024 — Sep 2025 · Peoria, IL</div>
+      <div class="job-term" data-slug="osf-healthcare" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Senior Network Architect at OSF HealthCare — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 03</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Migrated Cisco Nexus &amp; Catalyst infrastructure to Extreme Networks with zero downtime.</li>
-          <li>Designed and executed a full Azure cloud migration for healthcare workloads.</li>
-          <li>Automated network deployment and configuration management using Ansible.</li>
-          <li>Clustered 6x Palo Alto PA-6050s for high-availability zero-downtime firewalling.</li>
-          <li>Reduced incident response time by 40% through improved monitoring and runbook automation.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Azure</span>
-          <span class="exp-tag">Palo Alto PA-6050</span>
-          <span class="exp-tag">Ansible</span>
-          <span class="exp-tag">Cisco Nexus</span>
-          <span class="exp-tag">Extreme Networks</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 03</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Jan 2024 — Sep 2025</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Peoria, IL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">OSF HealthCare</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Senior Network Architect</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type osf-healthcare.log</div>
+            <ul class="job-bullets">
+                <li>Migrated Cisco Nexus &amp; Catalyst infrastructure to Extreme Networks with zero downtime.</li>
+                <li>Designed and executed a full Azure cloud migration for healthcare workloads.</li>
+                <li>Automated network deployment and configuration management using Ansible.</li>
+                <li>Clustered 6x Palo Alto PA-6050s for high-availability zero-downtime firewalling.</li>
+                <li>Reduced incident response time by 40% through improved monitoring and runbook automation.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Azure</span>
+                <span>Palo Alto PA-6050</span>
+                <span>Ansible</span>
+                <span>Cisco Nexus</span>
+                <span>Extreme Networks</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">TAAC Support Engineer L5 / Technical Application Consultant</div>
-          <div class="exp-company">Arch Technology Solutions</div>
-          <div class="exp-meta">May 2023 — Dec 2023 · Oklahoma, United States</div>
+      <div class="job-term" data-slug="arch-technology-solutions" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="TAAC Support Engineer L5 / Technical Application Consultant at Arch Technology Solutions — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 04</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Managed F5 BIG-IP modules: LTM, ASM, APM, and AFM for global enterprise clients.</li>
-          <li>Provided Level 3 technical support resolving complex F5 network incidents in multi-tenant MSP environments.</li>
-          <li>Achieved 99.5% uptime for managed client applications through proactive traffic steering and SSL offload optimization.</li>
-          <li>Trained junior engineers and developed comprehensive technical documentation and SOPs.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">F5 BIG-IP</span>
-          <span class="exp-tag">LTM / ASM / APM / AFM</span>
-          <span class="exp-tag">MSP</span>
-          <span class="exp-tag">SSL Offload</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 04</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">May 2023 — Dec 2023</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Oklahoma, United States</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Arch Technology Solutions</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">TAAC Support Engineer L5 / Technical Application Consultant</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type arch-technology-solutions.log</div>
+            <ul class="job-bullets">
+                <li>Managed F5 BIG-IP modules: LTM, ASM, APM, and AFM for global enterprise clients.</li>
+                <li>Provided Level 3 technical support resolving complex F5 network incidents in multi-tenant MSP environments.</li>
+                <li>Achieved 99.5% uptime for managed client applications through proactive traffic steering and SSL offload optimization.</li>
+                <li>Trained junior engineers and developed comprehensive technical documentation and SOPs.</li>
+            </ul>
+            <div class="job-tags">
+                <span>F5 BIG-IP</span>
+                <span>LTM / ASM / APM / AFM</span>
+                <span>MSP</span>
+                <span>SSL Offload</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Sr. Network Engineer / NOC Lead</div>
-          <div class="exp-company">Callaway Golf</div>
-          <div class="exp-meta">Aug 2022 — May 2023 · Dallas-Fort Worth, TX</div>
+      <div class="job-term" data-slug="callaway-golf" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Engineer / NOC Lead at Callaway Golf — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 05</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Led NOC operations during a major hybrid infrastructure upgrade.</li>
-          <li>Designed high-availability network solutions using OSPF and BGP for data center migrations.</li>
-          <li>Secured hybrid cloud environments integrating Fortinet NGFWs and Palo Alto firewalls with AWS architectures.</li>
-          <li>Built Terraform-based AWS connectivity pipelines with Prisma Cloud for automated compliance and security monitoring.</li>
-          <li>Configured Cisco Nexus 7k/5k/2k platforms for scalable data center fabric and high-throughput delivery.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">OSPF / BGP</span>
-          <span class="exp-tag">Fortinet</span>
-          <span class="exp-tag">AWS</span>
-          <span class="exp-tag">Terraform</span>
-          <span class="exp-tag">Prisma Cloud</span>
-          <span class="exp-tag">Cisco Nexus</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 05</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Aug 2022 — May 2023</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Dallas-Fort Worth, TX</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Callaway Golf</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Engineer / NOC Lead</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type callaway-golf.log</div>
+            <ul class="job-bullets">
+                <li>Led NOC operations during a major hybrid infrastructure upgrade.</li>
+                <li>Designed high-availability network solutions using OSPF and BGP for data center migrations.</li>
+                <li>Secured hybrid cloud environments integrating Fortinet NGFWs and Palo Alto firewalls with AWS architectures.</li>
+                <li>Built Terraform-based AWS connectivity pipelines with Prisma Cloud for automated compliance and security monitoring.</li>
+                <li>Configured Cisco Nexus 7k/5k/2k platforms for scalable data center fabric and high-throughput delivery.</li>
+            </ul>
+            <div class="job-tags">
+                <span>OSPF / BGP</span>
+                <span>Fortinet</span>
+                <span>AWS</span>
+                <span>Terraform</span>
+                <span>Prisma Cloud</span>
+                <span>Cisco Nexus</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Sr. Network / Network Security Engineer</div>
-          <div class="exp-company">AbbVie</div>
-          <div class="exp-meta">Jul 2020 — Aug 2022 · Chicago, IL</div>
+      <div class="job-term" data-slug="abbvie" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network / Network Security Engineer at AbbVie — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 06</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Migrated IronPort email security platform to Zscaler Cloud, improving threat detection and management.</li>
-          <li>Supported Zero Trust Network Access deployment across global pharmaceutical operations.</li>
-          <li>Managed large-scale WAN environments using iBGP, eBGP, and MPLS.</li>
-          <li>Automated campus networking segmentation via Cisco DNA Center for SD-Access.</li>
-          <li>Configured Palo Alto 7080 and M-600 firewalls to protect sensitive clinical data.</li>
-          <li>Integrated Illumio for microsegmentation across the enterprise network.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Zscaler</span>
-          <span class="exp-tag">Zero Trust</span>
-          <span class="exp-tag">Cisco DNA / SD-Access</span>
-          <span class="exp-tag">iBGP / eBGP / MPLS</span>
-          <span class="exp-tag">Illumio</span>
-          <span class="exp-tag">Palo Alto 7080</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 06</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Jul 2020 — Aug 2022</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Chicago, IL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">AbbVie</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network / Network Security Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type abbvie.log</div>
+            <ul class="job-bullets">
+                <li>Migrated IronPort email security platform to Zscaler Cloud, improving threat detection and management.</li>
+                <li>Supported Zero Trust Network Access deployment across global pharmaceutical operations.</li>
+                <li>Managed large-scale WAN environments using iBGP, eBGP, and MPLS.</li>
+                <li>Automated campus networking segmentation via Cisco DNA Center for SD-Access.</li>
+                <li>Configured Palo Alto 7080 and M-600 firewalls to protect sensitive clinical data.</li>
+                <li>Integrated Illumio for microsegmentation across the enterprise network.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Zscaler</span>
+                <span>Zero Trust</span>
+                <span>Cisco DNA / SD-Access</span>
+                <span>iBGP / eBGP / MPLS</span>
+                <span>Illumio</span>
+                <span>Palo Alto 7080</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Sr. Network Engineer</div>
-          <div class="exp-company">State of Idaho, Department of Labor</div>
-          <div class="exp-meta">Apr 2019 — May 2020 · Boise, ID</div>
+      <div class="job-term" data-slug="state-of-idaho-department-of-labor" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Engineer at State of Idaho, Department of Labor — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 07</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Managed F5 LTM &amp; GTM load balancers in a high-compliance government environment.</li>
-          <li>Deployed Palo Alto &amp; Fortinet firewalls alongside Juniper SRX and Checkpoint in government facilities.</li>
-          <li>Designed and deployed secure wireless networks (802.11x) using WPA3 and RADIUS authentication.</li>
-          <li>Integrated AWS Direct Connect for secure access to cloud-based citizen services.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">F5 LTM / GTM</span>
-          <span class="exp-tag">Fortinet</span>
-          <span class="exp-tag">Juniper SRX</span>
-          <span class="exp-tag">AWS Direct Connect</span>
-          <span class="exp-tag">WPA3 / RADIUS</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 07</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Apr 2019 — May 2020</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Boise, ID</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">State of Idaho, Department of Labor</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type state-of-idaho-department-of-labor.log</div>
+            <ul class="job-bullets">
+                <li>Managed F5 LTM &amp; GTM load balancers in a high-compliance government environment.</li>
+                <li>Deployed Palo Alto &amp; Fortinet firewalls alongside Juniper SRX and Checkpoint in government facilities.</li>
+                <li>Designed and deployed secure wireless networks (802.11x) using WPA3 and RADIUS authentication.</li>
+                <li>Integrated AWS Direct Connect for secure access to cloud-based citizen services.</li>
+            </ul>
+            <div class="job-tags">
+                <span>F5 LTM / GTM</span>
+                <span>Fortinet</span>
+                <span>Juniper SRX</span>
+                <span>AWS Direct Connect</span>
+                <span>WPA3 / RADIUS</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Sr. Network Security Engineer</div>
-          <div class="exp-company">Biogen</div>
-          <div class="exp-meta">Dec 2017 — Mar 2019 · Cambridge, MA</div>
+      <div class="job-term" data-slug="biogen" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Security Engineer at Biogen — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 08</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Directed data center migrations using Cisco Nexus 7K/5K and optimized app availability with F5 LTM/GTM.</li>
-          <li>Engineered Cisco and Aruba wireless solutions using Ekahau and AirMagnet for site-wide high-density coverage.</li>
-          <li>Managed VPN, IPSec, DLP, anti-spam, and endpoint security policies.</li>
-          <li>Maintained PCI compliance through rigorous Checkpoint firewall auditing and VPN security management.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Cisco Nexus 7K/5K</span>
-          <span class="exp-tag">F5 LTM/GTM</span>
-          <span class="exp-tag">Checkpoint</span>
-          <span class="exp-tag">IPSec / VPN</span>
-          <span class="exp-tag">PCI Compliance</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 08</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Dec 2017 — Mar 2019</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Cambridge, MA</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Biogen</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Security Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type biogen.log</div>
+            <ul class="job-bullets">
+                <li>Directed data center migrations using Cisco Nexus 7K/5K and optimized app availability with F5 LTM/GTM.</li>
+                <li>Engineered Cisco and Aruba wireless solutions using Ekahau and AirMagnet for site-wide high-density coverage.</li>
+                <li>Managed VPN, IPSec, DLP, anti-spam, and endpoint security policies.</li>
+                <li>Maintained PCI compliance through rigorous Checkpoint firewall auditing and VPN security management.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Cisco Nexus 7K/5K</span>
+                <span>F5 LTM/GTM</span>
+                <span>Checkpoint</span>
+                <span>IPSec / VPN</span>
+                <span>PCI Compliance</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Sr. Network Engineer</div>
-          <div class="exp-company">Nielsen</div>
-          <div class="exp-meta">Oct 2016 — Nov 2017 · Tampa, FL</div>
+      <div class="job-term" data-slug="nielsen" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Engineer at Nielsen — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 09</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Managed complex VPN migrations and firewall upgrades across Checkpoint, Palo Alto, and Cisco ASA platforms.</li>
-          <li>Optimized WAN performance using Riverbed Steelhead and conducted deep packet analysis for threat mitigation.</li>
-          <li>Developed vulnerability reports and security SOPs for global network operations centers.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Checkpoint</span>
-          <span class="exp-tag">Cisco ASA</span>
-          <span class="exp-tag">Riverbed Steelhead</span>
-          <span class="exp-tag">VPN Migration</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 09</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Oct 2016 — Nov 2017</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Tampa, FL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Nielsen</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type nielsen.log</div>
+            <ul class="job-bullets">
+                <li>Managed complex VPN migrations and firewall upgrades across Checkpoint, Palo Alto, and Cisco ASA platforms.</li>
+                <li>Optimized WAN performance using Riverbed Steelhead and conducted deep packet analysis for threat mitigation.</li>
+                <li>Developed vulnerability reports and security SOPs for global network operations centers.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Checkpoint</span>
+                <span>Cisco ASA</span>
+                <span>Riverbed Steelhead</span>
+                <span>VPN Migration</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-role">Assistant Network Engineer</div>
-          <div class="exp-company">Wipro</div>
-          <div class="exp-meta">Dec 2014 — Aug 2016 · Hyderabad, India</div>
+      <div class="job-term" data-slug="wipro" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Assistant Network Engineer at Wipro — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 10</span>
         </div>
-        <ul class="exp-bullets">
-          <li>Supported L2/L3 routing and switching for global delivery centers using Cisco and Juniper EX/ACX hardware.</li>
-          <li>Configured NAT, ACLs, MP-BGP, and OSPF to support multi-site client activations.</li>
-          <li>Monitored network health using SolarWinds and assisted in site circuit troubleshooting and hardware provisioning.</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="exp-tag">Cisco / Juniper</span>
-          <span class="exp-tag">MP-BGP / OSPF</span>
-          <span class="exp-tag">NAT / ACLs</span>
-          <span class="exp-tag">SolarWinds</span>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 10</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Dec 2014 — Aug 2016</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Hyderabad, India</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Wipro</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Assistant Network Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type wipro.log</div>
+            <ul class="job-bullets">
+                <li>Supported L2/L3 routing and switching for global delivery centers using Cisco and Juniper EX/ACX hardware.</li>
+                <li>Configured NAT, ACLs, MP-BGP, and OSPF to support multi-site client activations.</li>
+                <li>Monitored network health using SolarWinds and assisted in site circuit troubleshooting and hardware provisioning.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Cisco / Juniper</span>
+                <span>MP-BGP / OSPF</span>
+                <span>NAT / ACLs</span>
+                <span>SolarWinds</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1131,6 +1559,82 @@
   }, { threshold: 0.3 });
 
   observer.observe(document.getElementById('about'));
+
+  // ── Boot warning dialog ──────────────────────────────────────
+  (function () {
+    const ov = document.getElementById('sysOverlay');
+    if (!ov) return;
+
+    // Only nag once per browsing session
+    let seen = false;
+    try { seen = sessionStorage.getItem('sysSeen') === '1'; } catch (e) {}
+
+    if (seen) {
+      ov.remove();
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    function dismiss() {
+      ov.classList.add('hide');
+      document.body.style.overflow = '';
+      try { sessionStorage.setItem('sysSeen', '1'); } catch (e) {}
+      setTimeout(() => ov.remove(), 320);
+    }
+
+    ['sysOk', 'sysX', 'sysAbort'].forEach(id => {
+      const b = document.getElementById(id);
+      if (b) b.addEventListener('click', dismiss);
+    });
+
+    // Click the backdrop or hit Escape
+    ov.addEventListener('click', e => { if (e.target === ov) dismiss(); });
+    document.addEventListener('keydown', function esc(e) {
+      if (e.key === 'Escape' || e.key === 'Enter') {
+        dismiss();
+        document.removeEventListener('keydown', esc);
+      }
+    });
+
+    const ok = document.getElementById('sysOk');
+    if (ok) ok.focus();
+  })();
+
+  // ── Experience: one cmd window per role ──────────────────────
+  // Open with a click, or focus a window and press Enter / Y.
+  // Escape closes the focused window.
+  (function () {
+    const terms = document.querySelectorAll('.job-term');
+
+    function setOpen(term, open) {
+      term.classList.toggle('open', open);
+      term.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const ask = term.querySelector('.job-ask');
+      if (ask) {
+        ask.innerHTML = open
+          ? 'View full log? [<b>Y</b>/N] y'
+          : 'View full log? [<b>Y</b>/N] <span class="job-caret">\u2588</span>';
+      }
+    }
+
+    terms.forEach(term => {
+      term.addEventListener('click', () => {
+        setOpen(term, !term.classList.contains('open'));
+      });
+
+      term.addEventListener('keydown', e => {
+        const k = e.key.toLowerCase();
+        if (k === 'enter' || k === ' ' || k === 'y') {
+          e.preventDefault();
+          setOpen(term, k === 'y' ? true : !term.classList.contains('open'));
+        } else if (k === 'n' || k === 'escape') {
+          e.preventDefault();
+          setOpen(term, false);
+        }
+      });
+    });
+  })();
 
   // ── Link fallbacks (works even inside sandboxed preview panes) ──
 
