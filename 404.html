@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Destination host unreachable</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23000'/%3E%3Cpath d='M6 10l5 6-5 6' stroke='%2300ff41' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 22h11' stroke='%2300ff41' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000; --surface: #0a0f0a; --border: #0d2a0d;
+      --accent: #00ff41; --accent2: #00cc33;
+      --text: #b0d4b0; --muted: #3a6b3a; --heading: #ccffcc;
+      --mono: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      line-height: 1.7;
+    }
+
+    .wrap { width: 100%; max-width: 620px; }
+
+    .term {
+      background: #000;
+      border: 1px solid #1a3a1a;
+      border-radius: 9px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,255,65,.12), 0 0 2px rgba(0,255,65,.4);
+    }
+
+    .bar {
+      background: #0d1a0d;
+      border-bottom: 1px solid var(--border);
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+    .title { font-size: 11px; color: var(--muted); margin-left: 8px; }
+
+    .body { padding: 22px 22px 26px; font-size: 13px; }
+
+    .cmd { color: var(--accent); margin-bottom: 14px; }
+    .prompt { color: var(--accent2); }
+
+    .out div { line-height: 1.95; opacity: 0; animation: fin .3s ease forwards; }
+
+    @keyframes fin { to { opacity: 1; } }
+
+    .err  { color: #ff5f57; }
+    .dim  { color: var(--muted); }
+    .ok   { color: var(--accent); }
+    .head { color: var(--heading); font-weight: bold; }
+
+    .code {
+      font-size: 66px;
+      color: var(--accent);
+      line-height: 1;
+      margin: 4px 0 14px;
+      text-shadow: 0 0 22px rgba(0,255,65,.45);
+      letter-spacing: .04em;
+    }
+
+    .actions { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      padding: 9px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: border-color .15s, color .15s;
+    }
+
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .btn.primary:hover { opacity: .85; color: #000; }
+
+    .caret { animation: blink 1s step-start infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="term">
+      <div class="bar">
+        <span class="dot" style="background:#ff5f57"></span>
+        <span class="dot" style="background:#febc2e"></span>
+        <span class="dot" style="background:#28c840"></span>
+        <span class="title">cmd.exe &mdash; ping</span>
+      </div>
+      <div class="body">
+        <div class="cmd"><span class="prompt">C:\Users\Dinesh&gt;</span> ping <span id="path">that-page</span></div>
+        <div class="out" id="out"></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="/" class="btn primary">&larr; back to dm1121.github.io</a>
+      <a href="mailto:dineshmmekala@gmail.com" class="btn">report the broken link</a>
+    </div>
+  </div>
+
+  <script>
+    // Show what they actually asked for.
+    // If someone opens 404.html directly it would ping itself — use a
+    // neutral placeholder in that case rather than looking broken.
+    var p = location.pathname.replace(/^\//, '');
+    if (!p || /^404(\.html?)?$/i.test(p) || /\/404(\.html?)?$/i.test(p)) {
+      p = 'unknown-host';
+    }
+    p = p.slice(0, 40);
+    document.getElementById('path').textContent = p;
+
+    var LINES = [
+      ['Pinging ' + p + ' with 32 bytes of data:', ''],
+      ['&nbsp;', ''],
+      ['Request timed out.', 'err'],
+      ['Request timed out.', 'err'],
+      ['Destination host unreachable.', 'err'],
+      ['&nbsp;', ''],
+      ['Ping statistics: 3 sent, 0 received, <span class="err">100% loss</span>', 'dim'],
+      ['&nbsp;', ''],
+      ['<span class="code">404</span>', ''],
+      ['This route does not exist in the table.', 'head'],
+      ['The page you wanted was never advertised, or has been withdrawn.', 'dim'],
+      ['&nbsp;', ''],
+      ['Next hop: <span class="ok">/</span> &mdash; the default gateway is still up.<span class="caret">&#9608;</span>', '']
+    ];
+
+    var out = document.getElementById('out');
+    LINES.forEach(function (l, i) {
+      setTimeout(function () {
+        var d = document.createElement('div');
+        if (l[1]) d.className = l[1];
+        d.innerHTML = l[0];
+        out.appendChild(d);
+      }, i * 160);
+    });
+  </script>
+</body>
+</html>
