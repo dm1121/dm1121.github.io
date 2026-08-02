@@ -1020,6 +1020,9 @@
     .bgp-yr   { color: var(--muted); font-size: 11px; }
     .bgp-role { color: var(--text); font-size: 11.5px; }
 
+    .bgp-more-rows { display: none; }
+    .bgp-more-rows.open { display: table-row-group; }
+
     .bgp-cur .bgp-org { color: var(--accent); }
     .bgp-flag { color: var(--accent); font-size: 10px; margin-left: 6px; }
 
@@ -1211,7 +1214,7 @@
 
     .if-status { white-space: nowrap; }
     .if-status.up   { color: var(--accent); }
-    .if-status.idle { color: #7a6a1f; }
+    .if-status.idle { color: #9c3535; }
 
     .if-vlan, .if-duplex, .if-type {
       color: var(--muted);
@@ -1223,7 +1226,7 @@
     .if-speed { white-space: nowrap; font-weight: bold; }
     .if-speed.sp-10g  { color: var(--accent); }
     .if-speed.sp-1g   { color: #2f9c3f; }
-    .if-speed.sp-auto { color: #7a6a1f; }
+    .if-speed.sp-auto { color: #9c3535; }
 
     .if-mod {
       color: #2c552c;
@@ -1242,7 +1245,7 @@
 
     .if-legend .sp-10g  { color: var(--accent); font-weight: bold; }
     .if-legend .sp-1g   { color: #2f9c3f; font-weight: bold; }
-    .if-legend .sp-auto { color: #7a6a1f; font-weight: bold; }
+    .if-legend .sp-auto { color: #9c3535; font-weight: bold; }
 
     .if-foot {
       font-family: var(--mono);
@@ -1297,7 +1300,7 @@
     .sh-head  { color: var(--heading); font-weight: bold; }
     .sh-ok    { color: var(--accent); }
     .sh-err   { color: #ff5f57; }
-    .sh-warn  { color: #febc2e; }
+    .sh-warn  { color: #c92a2a; }
 
     .sh-out a { color: var(--accent); text-decoration: underline; }
 
@@ -1309,7 +1312,7 @@
     }
 
     .sh-prompt { color: var(--accent2); flex-shrink: 0; }
-    #shPrompt.priv { color: #febc2e; }
+    #shPrompt.priv { color: #ff2b2b; }
 
     .sh-input {
       flex: 1;
@@ -1581,7 +1584,10 @@
           You are entering <span class="hi">Dinesh Mekala's Personal Hacking Studio</span>.<br>
           All packets on this segment are inspected, logged, and
           <span class="hi">thoroughly over-engineered</span>.<br>
-          Firewalls are clustered. Routes are converged. Proceed with caution.
+          Firewalls are clustered. Routes are converged.
+          <span class="hi">Traffic is load-balanced</span> &mdash; every request finds a healthy pool member.<br>
+          Everything is <span class="hi">backed up in the cloud</span>, replicated across regions.<br>
+          Proceed with caution.
         </div>
       </div>
     </div>
@@ -1624,17 +1630,7 @@
         <div class="hero-actions">
           <a href="https://www.linkedin.com/in/dnshm" target="_blank" rel="noopener noreferrer" class="btn-ghost js-ext">LinkedIn</a>
           <button class="btn-primary js-ping" type="button">Email</button>
-          <button class="btn-ghost js-exp" type="button">experience &rarr;</button>
-        </div>
-        <div class="hero-tags">
-          <span class="tag">Cisco · CCIE</span>
-          <span class="tag">Palo Alto · PCNSE</span>
-          <span class="tag">Azure</span>
-          <span class="tag">AWS</span>
-          <span class="tag">Zscaler</span>
-          <span class="tag">Ansible</span>
-          <span class="tag">Terraform</span>
-          <span class="tag">PMP</span>
+          <button class="btn-ghost js-exp" type="button">experience</button>
         </div>
       </div>
     </div>
@@ -1655,7 +1651,7 @@
       <div class="terminal-box">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; nslookup</span>
         </div>
@@ -1671,7 +1667,7 @@
       <div class="terminal-box">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; ipconfig</span>
         </div>
@@ -1709,7 +1705,7 @@
       <div class="terminal-box">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">dinesh&gt; show inventory</span>
         </div>
@@ -1749,7 +1745,7 @@
       <div class="terminal-box">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">dinesh&gt; show ip bgp</span>
         </div>
@@ -1770,7 +1766,7 @@
                   <td>career/32</td>
                   <td>10.0.0.1</td>
                   <td>0</td>
-                  <td class="bgp-path">14 16 17 19 20 22 23 24 25 26 <span class="bgp-i">i</span></td>
+                  <td class="bgp-path">26 25 24 23 22 20 19 17 16 14 <span class="bgp-i">i</span></td>
                 </tr>
               </tbody>
             </table>
@@ -1779,19 +1775,27 @@
           <div class="ip-hdr" style="margin-top:20px;">AS-PATH detail:</div>
           <div class="bgp-scroll">
             <table class="bgp-table bgp-detail">
-              <tbody>
-                <tr><td class="bgp-as">14</td><td class="bgp-org">Wipro</td><td class="bgp-yr">2014 &ndash; 2016</td><td class="bgp-role">Assistant Network Engineer</td></tr>
-                <tr><td class="bgp-as">16</td><td class="bgp-org">Nielsen</td><td class="bgp-yr">2016 &ndash; 2017</td><td class="bgp-role">Sr. Network Engineer</td></tr>
-                <tr><td class="bgp-as">17</td><td class="bgp-org">Biogen</td><td class="bgp-yr">2017 &ndash; 2019</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
-                <tr><td class="bgp-as">19</td><td class="bgp-org">State of Idaho</td><td class="bgp-yr">2019 &ndash; 2020</td><td class="bgp-role">Sr. Network Engineer</td></tr>
-                <tr><td class="bgp-as">20</td><td class="bgp-org">AbbVie</td><td class="bgp-yr">2020 &ndash; 2022</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
-                <tr><td class="bgp-as">22</td><td class="bgp-org">Callaway Golf</td><td class="bgp-yr">2022 &ndash; 2023</td><td class="bgp-role">Sr. Network Engineer / NOC Lead</td></tr>
-                <tr><td class="bgp-as">23</td><td class="bgp-org">Arch Technology</td><td class="bgp-yr">2023</td><td class="bgp-role">TAAC Support Engineer L5</td></tr>
-                <tr><td class="bgp-as">24</td><td class="bgp-org">OSF HealthCare</td><td class="bgp-yr">2024 &ndash; 2025</td><td class="bgp-role">Senior Network Architect</td></tr>
-                <tr><td class="bgp-as">25</td><td class="bgp-org">CTS Corporation</td><td class="bgp-yr">2025 &ndash; 2026</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                            <tbody>
                 <tr class="bgp-cur"><td class="bgp-as">26</td><td class="bgp-org">City of Tallahassee</td><td class="bgp-yr">2026 &ndash; present</td><td class="bgp-role">Network Manager <span class="bgp-flag">[best]</span></td></tr>
+                <tr><td class="bgp-as">25</td><td class="bgp-org">CTS Corporation</td><td class="bgp-yr">2025 &ndash; 2026</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                <tr><td class="bgp-as">24</td><td class="bgp-org">OSF HealthCare</td><td class="bgp-yr">2024 &ndash; 2025</td><td class="bgp-role">Senior Network Architect</td></tr>
+                <tr><td class="bgp-as">23</td><td class="bgp-org">Arch Technology</td><td class="bgp-yr">2023</td><td class="bgp-role">TAAC Support Engineer L5</td></tr>
+                <tr><td class="bgp-as">22</td><td class="bgp-org">Callaway Golf</td><td class="bgp-yr">2022 &ndash; 2023</td><td class="bgp-role">Sr. Network Engineer / NOC Lead</td></tr>
               </tbody>
-            </table>
+              <tbody class="bgp-more-rows" id="bgpMoreRows">
+                <tr><td class="bgp-as">20</td><td class="bgp-org">AbbVie</td><td class="bgp-yr">2020 &ndash; 2022</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                <tr><td class="bgp-as">19</td><td class="bgp-org">State of Idaho</td><td class="bgp-yr">2019 &ndash; 2020</td><td class="bgp-role">Sr. Network Engineer</td></tr>
+                <tr><td class="bgp-as">17</td><td class="bgp-org">Biogen</td><td class="bgp-yr">2017 &ndash; 2019</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                <tr><td class="bgp-as">16</td><td class="bgp-org">Nielsen</td><td class="bgp-yr">2016 &ndash; 2017</td><td class="bgp-role">Sr. Network Engineer</td></tr>
+                <tr><td class="bgp-as">14</td><td class="bgp-org">Wipro</td><td class="bgp-yr">2014 &ndash; 2016</td><td class="bgp-role">Assistant Network Engineer</td></tr>
+              </tbody>
+              </table>
+          </div>
+          <div class="more-wrap" style="margin-top:14px;">
+            <button class="more-btn" id="bgpMoreBtn" type="button"
+                    aria-expanded="false" aria-controls="bgpMoreRows">
+              <span class="more-caret">&#9660;</span> more &mdash; 5 earlier AS hops (2014 &ndash; 2022)
+            </button>
           </div>
 
           <div class="inv-foot">10 AS hop(s) &middot; path selected, no loops detected</div>
@@ -2487,7 +2491,7 @@
     <div class="terminal-box sh-box" id="shBox">
       <div class="terminal-titlebar">
         <span class="t-dot" style="background:#ff5f57"></span>
-        <span class="t-dot" style="background:#febc2e"></span>
+        <span class="t-dot" style="background:#a01010"></span>
         <span class="t-dot" style="background:#28c840"></span>
         <span class="t-title">dinesh@portfolio &mdash; bash</span>
       </div>
@@ -2551,7 +2555,7 @@
   <div class="ping-shell">
     <div class="terminal-titlebar">
       <span class="t-dot" style="background:#ff5f57"></span>
-      <span class="t-dot" style="background:#febc2e"></span>
+      <span class="t-dot" style="background:#a01010"></span>
       <span class="t-dot" style="background:#28c840"></span>
       <span class="t-title" id="pingTitle">cmd.exe &mdash; ping</span>
       <button class="ping-x" id="pingX" aria-label="Close">&#10005;</button>
@@ -2584,7 +2588,7 @@
            aria-label="Network Manager at City of Tallahassee — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 01</span>
         </div>
@@ -2618,7 +2622,7 @@
            aria-label="Senior Network Security Engineer at CTS Corporation — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 02</span>
         </div>
@@ -2658,7 +2662,7 @@
            aria-label="Senior Network Architect at OSF HealthCare — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 03</span>
         </div>
@@ -2697,7 +2701,7 @@
            aria-label="TAAC Support Engineer L5 / Technical Application Consultant at Arch Technology Solutions — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 04</span>
         </div>
@@ -2734,7 +2738,7 @@
            aria-label="Sr. Network Engineer / NOC Lead at Callaway Golf — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 05</span>
         </div>
@@ -2783,7 +2787,7 @@
            aria-label="Sr. Network / Network Security Engineer at AbbVie — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 06</span>
         </div>
@@ -2824,7 +2828,7 @@
            aria-label="Sr. Network Engineer at State of Idaho, Department of Labor — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 07</span>
         </div>
@@ -2862,7 +2866,7 @@
            aria-label="Sr. Network Security Engineer at Biogen — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 08</span>
         </div>
@@ -2900,7 +2904,7 @@
            aria-label="Sr. Network Engineer at Nielsen — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 09</span>
         </div>
@@ -2936,7 +2940,7 @@
            aria-label="Assistant Network Engineer at Wipro — press Enter or Y for details">
         <div class="terminal-titlebar">
           <span class="t-dot" style="background:#ff5f57"></span>
-          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#a01010"></span>
           <span class="t-dot" style="background:#28c840"></span>
           <span class="t-title">cmd.exe &mdash; hop 10</span>
         </div>
@@ -3122,6 +3126,20 @@
 
     const ok = document.getElementById('sysOk');
     if (ok) ok.focus();
+  })();
+
+  // ── BGP AS-path: reveal the earlier hops ─────────────────────
+  (function () {
+    const btn  = document.getElementById('bgpMoreBtn');
+    const rows = document.getElementById('bgpMoreRows');
+    if (!btn || !rows) return;
+    btn.addEventListener('click', () => {
+      const open = rows.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.innerHTML = open
+        ? '<span class="more-caret">\u25BC</span> hide earlier AS hops'
+        : '<span class="more-caret">\u25BC</span> more \u2014 5 earlier AS hops (2014 \u2013 2022)';
+    });
   })();
 
   // ── Interactive shell ────────────────────────────────────────
