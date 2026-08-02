@@ -1172,7 +1172,7 @@
       border-collapse: collapse;
       font-family: var(--mono);
       font-size: 12px;
-      min-width: 560px;
+      min-width: 780px;
     }
 
     .if-table th {
@@ -1213,8 +1213,36 @@
     .if-status.up   { color: var(--accent); }
     .if-status.idle { color: #7a6a1f; }
 
-    .if-speed { color: var(--text); white-space: nowrap; }
-    .if-lvl   { white-space: nowrap; }
+    .if-vlan, .if-duplex, .if-type {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .if-type { font-size: 10.5px; }
+
+    .if-speed { white-space: nowrap; font-weight: bold; }
+    .if-speed.sp-10g  { color: var(--accent); }
+    .if-speed.sp-1g   { color: #2f9c3f; }
+    .if-speed.sp-auto { color: #7a6a1f; }
+
+    .if-mod {
+      color: #2c552c;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 10px;
+      margin-left: 8px;
+    }
+
+    .if-legend {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin: -8px 0 18px;
+    }
+
+    .if-legend .sp-10g  { color: var(--accent); font-weight: bold; }
+    .if-legend .sp-1g   { color: #2f9c3f; font-weight: bold; }
+    .if-legend .sp-auto { color: #7a6a1f; font-weight: bold; }
 
     .if-foot {
       font-family: var(--mono);
@@ -1787,528 +1815,654 @@
     <h2 class="section-title"><span>// </span>show interfaces status</h2>
 
     <div class="sk-summary">
-      <div class="sk-stat"><b>56</b><span>interfaces up</span></div>
-      <div class="sk-stat"><b>35</b><span>at 10G / expert</span></div>
-      <div class="sk-stat"><b>9</b><span>line cards</span></div>
+      <div class="sk-stat"><b>56</b><span>interfaces</span></div>
+      <div class="sk-stat"><b>35</b><span>at 10G</span></div>
+      <div class="sk-stat"><b>9</b><span>modules</span></div>
       <div class="sk-stat"><b>10+</b><span>years in production</span></div>
     </div>
 
     <div class="if-cmd"><span class="t-prompt">dinesh&gt;</span> show interfaces status</div>
 
+    <p class="if-legend">Port speed maps to depth &mdash;
+      <span class="sp-10g">10G</span> expert &middot;
+      <span class="sp-1g">a-1000</span> proficient &middot;
+      <span class="sp-auto">auto</span> familiar</p>
+
     <div class="if-stack">
         <div class="if-group">
-          <div class="if-group-title">cloud & infrastructure</div>
+          <div class="if-group-title">cloud & infrastructure <span class="if-mod">module 1</span></div>
           <div class="if-scroll">
             <table class="if-table">
               <thead>
                 <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr class="if-row">
-                <td class="if-port">Gi1/0/1</td>
-                <td class="if-name">Microsoft Azure<span class="if-note">VNet, ExpressRoute, NSG, full prod migration</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi1/0/2</td>
-                <td class="if-name">AWS<span class="if-note">EC2, S3, VPC, Direct Connect, TGW</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi1/0/3</td>
-                <td class="if-name">Terraform<span class="if-note">AWS connectivity pipelines, reusable modules</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi1/0/4</td>
-                <td class="if-name">Ansible<span class="if-note">Network device automation at scale</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi1/0/5</td>
-                <td class="if-name">Prisma Cloud<span class="if-note">Automated compliance + posture monitoring</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi1/0/6</td>
-                <td class="if-name">Hybrid Cloud Design<span class="if-note">On-prem to cloud, zero-downtime cutover</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="if-group">
-          <div class="if-group-title">firewalls & NGFW</div>
-          <div class="if-scroll">
-            <table class="if-table">
-              <thead>
-                <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr class="if-row">
-                <td class="if-port">Gi2/0/1</td>
-                <td class="if-name">Palo Alto (PCNSE)<span class="if-note">PA-6050 HA cluster, 7080, M-600, Panorama</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi2/0/2</td>
-                <td class="if-name">Cisco ASA / Firepower<span class="if-note">Policy, NAT, remote access VPN</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi2/0/3</td>
-                <td class="if-name">FortiGate<span class="if-note">FortiManager, FortiAnalyzer, HA, VPN routing</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi2/0/4</td>
-                <td class="if-name">Checkpoint<span class="if-note">Policy management, PCI audit cycles</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi2/0/5</td>
-                <td class="if-name">Juniper SRX<span class="if-note">High-compliance government deployments</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi2/0/6</td>
-                <td class="if-name">Firewall Migration<span class="if-note">Vendor-to-vendor rule conversion</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="if-group">
-          <div class="if-group-title">zero trust & sec ops</div>
-          <div class="if-scroll">
-            <table class="if-table">
-              <thead>
-                <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/1</td>
-                <td class="if-name">Zscaler ZIA / ZPA<span class="if-note">IronPort to Zscaler Cloud migration</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/2</td>
-                <td class="if-name">Zero Trust Access<span class="if-note">ZTNA rollout, global pharma scale</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/3</td>
-                <td class="if-name">Illumio<span class="if-note">Enterprise-wide microsegmentation</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/4</td>
-                <td class="if-name">Cisco ISE<span class="if-note">802.1X, posture, guest, TrustSec</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/5</td>
-                <td class="if-name">CrowdStrike<span class="if-note">Endpoint integration across MSP estates</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/6</td>
-                <td class="if-name">SIEM & Detection<span class="if-note">Splunk correlation, alerting, SOPs</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Gi3/0/7</td>
-                <td class="if-name">IDS / IPS<span class="if-note">Signature tuning, FP reduction</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="if-group">
-          <div class="if-group-title">routing & switching</div>
-          <div class="if-scroll">
-            <table class="if-table">
-              <thead>
-                <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
                 </tr>
               </thead>
               <tbody>
               <tr class="if-row">
                 <td class="if-port">Te1/0/1</td>
-                <td class="if-name">BGP<span class="if-note">iBGP, eBGP, MP-BGP, route policy, global WAN</span></td>
+                <td class="if-name">Microsoft Azure<span class="if-note">VNet, ExpressRoute, NSG, full prod migration</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">10</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
                 <td class="if-port">Te1/0/2</td>
-                <td class="if-name">OSPF / EIGRP<span class="if-note">Multi-area design, redistribution</span></td>
+                <td class="if-name">AWS<span class="if-note">EC2, S3, VPC, Direct Connect, TGW</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">10</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Te1/0/3</td>
-                <td class="if-name">MPLS<span class="if-note">L3VPN, global carrier circuits</span></td>
+                <td class="if-port">Gi1/0/3</td>
+                <td class="if-name">Terraform<span class="if-note">AWS connectivity pipelines, reusable modules</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">10</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
                 <td class="if-port">Te1/0/4</td>
-                <td class="if-name">Cisco Nexus<span class="if-note">7K / 5K / 2K, vPC, FEX, DC fabric</span></td>
+                <td class="if-name">Ansible<span class="if-note">Network device automation at scale</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">10</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Te1/0/5</td>
-                <td class="if-name">Cisco Catalyst<span class="if-note">Campus core, access, stacking</span></td>
+                <td class="if-port">Gi1/0/5</td>
+                <td class="if-name">Prisma Cloud<span class="if-note">Automated compliance + posture monitoring</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">10</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
                 <td class="if-port">Te1/0/6</td>
-                <td class="if-name">Arista<span class="if-note">Data center leaf-spine</span></td>
+                <td class="if-name">Hybrid Cloud Design<span class="if-note">On-prem to cloud, zero-downtime cutover</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Te1/0/7</td>
-                <td class="if-name">Extreme Networks<span class="if-note">Full Nexus/Catalyst migration target</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
-              </tr>
-              <tr class="if-row">
-                <td class="if-port">Te1/0/8</td>
-                <td class="if-name">HSRP / VRRP<span class="if-note">First-hop redundancy across cores</span></td>
-                <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">10</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="if-group">
-          <div class="if-group-title">SD-WAN & campus</div>
+          <div class="if-group-title">firewalls & NGFW <span class="if-mod">module 2</span></div>
           <div class="if-scroll">
             <table class="if-table">
               <thead>
                 <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
                 </tr>
               </thead>
               <tbody>
               <tr class="if-row">
                 <td class="if-port">Te2/0/1</td>
-                <td class="if-name">SD-WAN<span class="if-note">Multi-site enterprise overlay design</span></td>
+                <td class="if-name">Palo Alto (PCNSE)<span class="if-note">PA-6050 HA cluster, 7080, M-600, Panorama</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">20</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
                 <td class="if-port">Te2/0/2</td>
-                <td class="if-name">Cisco Meraki<span class="if-note">Cloud-managed switching + security</span></td>
+                <td class="if-name">Cisco ASA / Firepower<span class="if-note">Policy, NAT, remote access VPN</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">20</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
                 <td class="if-port">Te2/0/3</td>
+                <td class="if-name">FortiGate<span class="if-note">FortiManager, FortiAnalyzer, HA, VPN routing</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">20</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/4</td>
+                <td class="if-name">Checkpoint<span class="if-note">Policy management, PCI audit cycles</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">20</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/5</td>
+                <td class="if-name">Juniper SRX<span class="if-note">High-compliance government deployments</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">20</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te2/0/6</td>
+                <td class="if-name">Firewall Migration<span class="if-note">Vendor-to-vendor rule conversion</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">20</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">zero trust & sec ops <span class="if-mod">module 3</span></div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Te3/0/1</td>
+                <td class="if-name">Zscaler ZIA / ZPA<span class="if-note">IronPort to Zscaler Cloud migration</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te3/0/2</td>
+                <td class="if-name">Zero Trust Access<span class="if-note">ZTNA rollout, global pharma scale</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/3</td>
+                <td class="if-name">Illumio<span class="if-note">Enterprise-wide microsegmentation</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te3/0/4</td>
+                <td class="if-name">Cisco ISE<span class="if-note">802.1X, posture, guest, TrustSec</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/5</td>
+                <td class="if-name">CrowdStrike<span class="if-note">Endpoint integration across MSP estates</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/6</td>
+                <td class="if-name">SIEM & Detection<span class="if-note">Splunk correlation, alerting, SOPs</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te3/0/7</td>
+                <td class="if-name">IDS / IPS<span class="if-note">Signature tuning, FP reduction</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">30</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">routing & switching <span class="if-mod">module 4</span></div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Te4/0/1</td>
+                <td class="if-name">BGP<span class="if-note">iBGP, eBGP, MP-BGP, route policy, global WAN</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te4/0/2</td>
+                <td class="if-name">OSPF / EIGRP<span class="if-note">Multi-area design, redistribution</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te4/0/3</td>
+                <td class="if-name">MPLS<span class="if-note">L3VPN, global carrier circuits</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te4/0/4</td>
+                <td class="if-name">Cisco Nexus<span class="if-note">7K / 5K / 2K, vPC, FEX, DC fabric</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te4/0/5</td>
+                <td class="if-name">Cisco Catalyst<span class="if-note">Campus core, access, stacking</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi4/0/6</td>
+                <td class="if-name">Arista<span class="if-note">Data center leaf-spine</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi4/0/7</td>
+                <td class="if-name">Extreme Networks<span class="if-note">Full Nexus/Catalyst migration target</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te4/0/8</td>
+                <td class="if-name">HSRP / VRRP<span class="if-note">First-hop redundancy across cores</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">40</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">SD-WAN & campus <span class="if-mod">module 5</span></div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Te5/0/1</td>
+                <td class="if-name">SD-WAN<span class="if-note">Multi-site enterprise overlay design</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">50</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi5/0/2</td>
+                <td class="if-name">Cisco Meraki<span class="if-note">Cloud-managed switching + security</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-vlan">50</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi5/0/3</td>
                 <td class="if-name">Cisco DNA Center<span class="if-note">SD-Access campus segmentation</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">50</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Te2/0/4</td>
+                <td class="if-port">Te5/0/4</td>
                 <td class="if-name">VLAN / L2 Design<span class="if-note">Segmentation, STP, trunking</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">50</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Te2/0/5</td>
+                <td class="if-port">Te5/0/5</td>
                 <td class="if-name">NAT / ACLs<span class="if-note">Multi-site client activations</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">50</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="if-group">
-          <div class="if-group-title">load balancing</div>
+          <div class="if-group-title">load balancing <span class="if-mod">module 6</span></div>
           <div class="if-scroll">
             <table class="if-table">
               <thead>
                 <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
                 </tr>
               </thead>
               <tbody>
               <tr class="if-row">
-                <td class="if-port">Po1/0/1</td>
+                <td class="if-port">Te6/0/1</td>
                 <td class="if-name">F5 LTM<span class="if-note">Pools, monitors, iRules, SSL offload</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">60</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Po1/0/2</td>
+                <td class="if-port">Te6/0/2</td>
                 <td class="if-name">F5 GTM<span class="if-note">GSLB, wide IPs, DR failover</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">60</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Po1/0/3</td>
+                <td class="if-port">Gi6/0/3</td>
                 <td class="if-name">F5 ASM<span class="if-note">WAF policy, L7 protection</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">60</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Po1/0/4</td>
+                <td class="if-port">Gi6/0/4</td>
                 <td class="if-name">F5 APM<span class="if-note">Access policy, SSO integration</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">60</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Po1/0/5</td>
+                <td class="if-port">Gi6/0/5</td>
                 <td class="if-name">F5 AFM<span class="if-note">Network firewall module</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">60</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Po1/0/6</td>
+                <td class="if-port">Te6/0/6</td>
                 <td class="if-name">Traffic Steering<span class="if-note">99.5% uptime across managed clients</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">60</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="if-group">
-          <div class="if-group-title">wireless</div>
+          <div class="if-group-title">wireless <span class="if-mod">module 7</span></div>
           <div class="if-scroll">
             <table class="if-table">
               <thead>
                 <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
                 </tr>
               </thead>
               <tbody>
               <tr class="if-row">
-                <td class="if-port">Wl1/0/1</td>
+                <td class="if-port">Te7/0/1</td>
                 <td class="if-name">Cisco WLC<span class="if-note">Controller design, RF tuning</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">70</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Wl1/0/2</td>
+                <td class="if-port">Te7/0/2</td>
                 <td class="if-name">EAP-TLS / 802.1X<span class="if-note">Certificate-based enterprise auth</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">70</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Wl1/0/3</td>
+                <td class="if-port">Te7/0/3</td>
                 <td class="if-name">WPA3 / RADIUS<span class="if-note">Government facility deployments</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">70</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Wl1/0/4</td>
+                <td class="if-port">Gi7/0/4</td>
                 <td class="if-name">Aruba Wireless<span class="if-note">High-density campus coverage</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">70</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Wl1/0/5</td>
+                <td class="if-port">Gi7/0/5</td>
                 <td class="if-name">Ekahau / AirMagnet<span class="if-note">Predictive and validation surveys</span></td>
                 <td class="if-status idle">notconnect</td>
-                <td class="if-speed">auto</td>
-                <td class="if-lvl"><span class="skill-level familiar">familiar</span></td>
+                <td class="if-vlan">70</td>
+                <td class="if-duplex">auto</td>
+                <td class="if-speed sp-auto">auto</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="if-group">
-          <div class="if-group-title">automation & tooling</div>
+          <div class="if-group-title">automation & tooling <span class="if-mod">module 8</span></div>
           <div class="if-scroll">
             <table class="if-table">
               <thead>
                 <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
                 </tr>
               </thead>
               <tbody>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/1</td>
+                <td class="if-port">Te8/0/1</td>
                 <td class="if-name">Ansible<span class="if-note">Playbooks for config + deployment</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/2</td>
+                <td class="if-port">Gi8/0/2</td>
                 <td class="if-name">Python<span class="if-note">Network scripting, parsing, API work</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/3</td>
+                <td class="if-port">Gi8/0/3</td>
                 <td class="if-name">TCL<span class="if-note">Device-side automation</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/4</td>
+                <td class="if-port">Gi8/0/4</td>
                 <td class="if-name">GitOps<span class="if-note">Config mgmt, faster site activations</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/5</td>
+                <td class="if-port">Te8/0/5</td>
                 <td class="if-name">Wireshark<span class="if-note">Deep packet analysis, root cause</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/6</td>
+                <td class="if-port">Gi8/0/6</td>
                 <td class="if-name">Splunk<span class="if-note">Log correlation, dashboards</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Lo0/0/7</td>
+                <td class="if-port">Gi8/0/7</td>
                 <td class="if-name">SolarWinds<span class="if-note">NPM monitoring, alerting</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">1000</td>
-                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+                <td class="if-vlan">80</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-1g">a-1000</td>
+                <td class="if-type">10/100/1000BaseTX</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="if-group">
-          <div class="if-group-title">compliance & leadership</div>
+          <div class="if-group-title">compliance & leadership <span class="if-mod">module 9</span></div>
           <div class="if-scroll">
             <table class="if-table">
               <thead>
                 <tr>
-                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Vlan</th>
+                  <th>Duplex</th><th>Speed</th><th>Type</th>
                 </tr>
               </thead>
               <tbody>
               <tr class="if-row">
-                <td class="if-port">Mg0/0/1</td>
+                <td class="if-port">Te9/0/1</td>
                 <td class="if-name">PCI-DSS<span class="if-note">Firewall auditing, segmentation validation</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">90</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Mg0/0/2</td>
+                <td class="if-port">Te9/0/2</td>
                 <td class="if-name">HIPAA / Healthcare<span class="if-note">Clinical network + data protection</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">90</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Mg0/0/3</td>
+                <td class="if-port">Te9/0/3</td>
                 <td class="if-name">Government Compliance<span class="if-note">State agency, high-assurance networks</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">90</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Mg0/0/4</td>
+                <td class="if-port">Te9/0/4</td>
                 <td class="if-name">PMP<span class="if-note">Project delivery, stakeholder management</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">90</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Mg0/0/5</td>
+                <td class="if-port">Te9/0/5</td>
                 <td class="if-name">NOC Leadership<span class="if-note">24/7 ops, incident command</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">90</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               <tr class="if-row">
-                <td class="if-port">Mg0/0/6</td>
+                <td class="if-port">Te9/0/6</td>
                 <td class="if-name">Mentoring<span class="if-note">Junior engineer training, SOP authoring</span></td>
                 <td class="if-status up">connected</td>
-                <td class="if-speed">10G</td>
-                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+                <td class="if-vlan">90</td>
+                <td class="if-duplex">a-full</td>
+                <td class="if-speed sp-10g">10G</td>
+                <td class="if-type">SFP-10GBase-SR</td>
               </tr>
               </tbody>
             </table>
@@ -2316,7 +2470,7 @@
         </div>
     </div>
 
-    <div class="if-foot">56 interface(s) listed &middot; 35 operating at 10G</div>
+    <div class="if-foot">56 interface(s) &middot; 35 at 10G &middot; 20 at 1G &middot; 1 notconnect</div>
   </div>
 </section>
 
