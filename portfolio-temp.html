@@ -1,0 +1,3496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dinesh Mekala — Sr. Network Architect | Cloud Migration & Security | Cisco · Palo Alto · Azure · Zscaler | CCIE | PCNSE | PMP" />
+  <title>Dinesh Mekala — Sr. Network Architect</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23000'/%3E%3Cpath d='M6 10l5 6-5 6' stroke='%2300ff41' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 22h11' stroke='%2300ff41' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    /* ── Reset & Base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #000000;
+      --surface:  #0a0f0a;
+      --border:   #0d2a0d;
+      --accent:   #00ff41;
+      --accent2:  #00cc33;
+      --text:     #b0d4b0;
+      --muted:    #3a6b3a;
+      --heading:  #ccffcc;
+      --tag-bg:   #001a00;
+      --radius:   6px;
+      --mono:     'Courier New', Courier, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 52px;
+    }
+
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    .nav-cta {
+      font-size: 13px;
+      font-family: var(--mono);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 5px 14px;
+      border-radius: var(--radius);
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: rgba(0,255,65,0.10); text-decoration: none; }
+
+    /* ── Sections ─────────────────────────────────────────────── */
+    section { padding: 80px 0; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--heading);
+      font-family: var(--mono);
+      margin-bottom: 40px;
+    }
+
+    .section-title span { color: var(--muted); }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 52px;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--surface);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    .hero-badge {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: .04em;
+    }
+
+    /* map pin, drawn in CSS — bobs like a dropped marker */
+    .geo-pin {
+      position: relative;
+      width: 11px;
+      height: 11px;
+      flex-shrink: 0;
+      border: 2px solid var(--accent);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      animation: pinBob 1.9s ease-in-out infinite;
+      filter: drop-shadow(0 0 5px rgba(0,255,65,.6));
+    }
+
+    /* pin's inner dot */
+    .geo-pin::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* radar ping rippling out from the pin */
+    .geo-pin::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 11px;
+      height: 11px;
+      margin: -5.5px 0 0 -5.5px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      animation: pinPing 1.9s ease-out infinite;
+    }
+
+    @keyframes pinBob {
+      0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+      50%      { transform: rotate(-45deg) translate(2px, -2px); }
+    }
+
+    @keyframes pinPing {
+      0%   { transform: scale(1);   opacity: .85; }
+      70%  { transform: scale(3.2); opacity: 0; }
+      100% { transform: scale(3.2); opacity: 0; }
+    }
+
+    /* location text gently pulses */
+    .geo-text { animation: geoGlow 2.6s ease-in-out infinite; }
+
+    @keyframes geoGlow {
+      0%, 100% { opacity: .72; text-shadow: none; }
+      50%      { opacity: 1;   text-shadow: 0 0 9px rgba(0,255,65,.55); }
+    }
+
+    /* respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .geo-pin, .geo-pin::after, .geo-text { animation: none; }
+      .geo-pin { transform: rotate(-45deg); }
+    }
+
+    .hero-name {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: 18px;
+      color: #ff2b2b;
+      margin-bottom: 24px;
+      text-shadow: 0 0 14px rgba(255,43,43,.45);
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    /* pipe separators */
+    .hero-title .hp {
+      color: #a01010;
+      margin: 0 6px;
+      font-weight: normal;
+    }
+
+    /* certs sit a touch smaller than the job title */
+    .hero-certs { font-size: 14px; letter-spacing: .04em; }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000000;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px;
+      padding: 9px 18px;
+      border-radius: var(--radius);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-size: 12px;
+      font-family: var(--mono);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,255,65,0.20);
+    }
+
+    /* ── About ────────────────────────────────────────────────── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-text p { color: var(--text); margin-bottom: 16px; }
+
+    .highlight-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .highlight-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .highlight-list li::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .cert-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cert-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cert-icon {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      background: rgba(0,255,65,0.10);
+      padding: 4px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: 14px;
+      color: var(--heading);
+      font-weight: 500;
+    }
+
+    .cert-issuer {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Skills ───────────────────────────────────────────────── */
+    #skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .skill-group-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    .sk-tagline {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .sk-row { display: flex; flex-direction: column; gap: 2px; }
+
+    .sk-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .sk-name {
+      color: var(--heading);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .sk-note {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* skills summary strip */
+    .sk-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .sk-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+
+    .sk-stat b {
+      display: block;
+      font-family: var(--mono);
+      font-size: 28px;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .sk-stat span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    .skill-name { color: var(--text); }
+
+    .skill-level {
+      font-size: 10px;
+      font-family: var(--mono);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    .skill-level.expert  { background: rgba(0,255,65,0.14); color: var(--accent); }
+    .skill-level.proficient { background: rgba(0,255,65,0.10); color: #00ff41; }
+    .skill-level.familiar { background: rgba(0,200,40,0.08); color: #00aa28; }
+
+    /* ── Education ────────────────────────────────────────────── */
+    .edu-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .edu-icon {
+      font-family: var(--mono);
+      font-size: 20px;
+      color: var(--accent);
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: rgba(0,255,65,0.10);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .edu-school { font-size: 16px; font-weight: 600; color: var(--heading); }
+    .edu-degree { font-size: 14px; color: var(--text); margin-top: 2px; }
+    .edu-dates  { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-top: 4px; }
+
+    /* ── Contact ──────────────────────────────────────────────── */
+    #contact { background: var(--bg); }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-family: var(--mono);
+      font-size: 22px;
+      color: var(--heading);
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      font-size: 15px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Terminal Box ─────────────────────────────────────────── */
+    .terminal-box {
+      background: #000;
+      border: 1px solid #1a3a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 0 24px rgba(0,255,65,0.08), 0 0 2px rgba(0,255,65,0.3);
+      max-width: 560px;
+    }
+
+    .terminal-titlebar {
+      background: #0d1a0d;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid #0d2a0d;
+    }
+
+    .t-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .t-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+
+    .terminal-body {
+      padding: 18px 20px 22px;
+      min-height: 110px;
+    }
+
+    .t-line {
+      display: flex;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 14px;
+    }
+
+    .t-prompt { color: #00aa28; }
+    .t-cmd    { color: #00ff41; }
+
+    .t-cursor {
+      color: #00ff41;
+      animation: blink 1s step-start infinite;
+      margin-left: 1px;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .t-output {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .t-out-line {
+      color: #b0d4b0;
+      line-height: 1.9;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .t-out-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .t-out-key  { color: var(--muted); }
+    .t-out-val  { color: #00ff41; }
+
+    /* ── Experience: one cmd window per role ──────────────────── */
+    .exp-help {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin: -24px 0 28px;
+      line-height: 1.9;
+    }
+
+    .exp-help kbd {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: #001a00;
+      border: 1px solid #1d4d1d;
+      border-bottom-width: 2px;
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+
+    .job-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .job-term {
+      background: #000;
+      border: 1px solid #1a3a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+    }
+
+    .job-term:hover,
+    .job-term:focus-visible {
+      border-color: var(--accent2);
+      box-shadow: 0 0 22px rgba(0,255,65,.10);
+    }
+
+    .job-term:focus-visible { border-color: var(--accent); }
+    .job-term.open { border-color: #245924; }
+
+    .job-body {
+      padding: 16px 20px 18px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .job-cmd {
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    .job-kv {
+      display: flex;
+      gap: 10px;
+      line-height: 1.95;
+      flex-wrap: wrap;
+    }
+
+    .jk {
+      color: var(--muted);
+      width: 78px;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+
+    .jk::after { content: ':'; }
+
+    .jv { color: var(--text); font-size: 13px; }
+
+    .jv-hi {
+      color: var(--heading);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .job-badge {
+      color: #000;
+      background: var(--accent);
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-left: 9px;
+      vertical-align: middle;
+    }
+
+    .job-ask {
+      color: var(--accent);
+      font-size: 12px;
+      margin-top: 14px;
+      user-select: none;
+    }
+
+    .job-ask b { color: #000; background: var(--accent); padding: 0 5px; border-radius: 2px; }
+
+    .job-caret {
+      animation: blink 1s step-start infinite;
+      margin-left: 2px;
+    }
+
+    .job-term.open .job-ask { color: var(--muted); }
+    .job-term.open .job-ask b { color: #000; background: var(--muted); }
+    .job-term.open .job-caret { display: none; }
+
+    .job-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease;
+    }
+
+    .job-term.open .job-detail { max-height: 900px; }
+
+    .job-echo {
+      color: var(--accent);
+      font-size: 12px;
+      margin: 14px 0 10px;
+    }
+
+    .job-bullets { list-style: none; margin-bottom: 12px; }
+
+    .job-bullets li {
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .job-bullets li::before {
+      content: '\203A';
+      position: absolute;
+      left: 4px;
+      color: var(--accent2);
+    }
+
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .job-tags span {
+      font-size: 10px;
+      color: var(--muted);
+      border: 1px solid #122c12;
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+
+    .job-eof { color: #2c552c; font-size: 11px; }
+
+    /* ── Welcome banner ───────────────────────────────────────── */
+    .hero-welcome {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      text-shadow: 0 0 12px rgba(0,255,65,.45);
+    }
+
+    .hero-welcome::before { content: '> '; color: var(--accent2); }
+
+    .hero-welcome .wc {
+      animation: blink 1s step-start infinite;
+      font-weight: bold;
+    }
+
+    /* ── POST / boot sequence ─────────────────────────────────── */
+    .boot {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      background: #000;
+      padding: 34px 26px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      overflow: hidden;
+      transition: opacity .35s ease;
+    }
+
+    .boot.done { opacity: 0; pointer-events: none; }
+    .boot[hidden] { display: none; }
+
+    .boot-inner { max-width: 720px; }
+
+    .boot-inner div {
+      line-height: 1.95;
+      opacity: 0;
+      animation: bootIn .12s ease forwards;
+    }
+
+    @keyframes bootIn { to { opacity: 1; } }
+
+    .bt-ok   { color: var(--accent); }
+    .bt-dim  { color: var(--muted); }
+    .bt-head { color: var(--heading); font-weight: bold; }
+
+    /* ── Boot warning dialog ──────────────────────────────────── */
+    .sys-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 1;
+      transition: opacity .3s ease;
+    }
+
+    .sys-overlay.hide { opacity: 0; pointer-events: none; }
+
+    .sys-dialog {
+      width: 100%;
+      max-width: 480px;
+      background: #000;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,255,65,.28), 0 0 3px rgba(0,255,65,.6);
+      animation: sysIn .28s ease-out;
+    }
+
+    @keyframes sysIn {
+      from { opacity: 0; transform: translateY(-14px) scale(.97); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .sys-bar {
+      background: #00250b;
+      border-bottom: 1px solid #124d12;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: .06em;
+    }
+
+    .sys-x {
+      color: var(--accent);
+      background: none;
+      border: 1px solid #124d12;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1;
+      padding: 2px 7px;
+      cursor: pointer;
+    }
+
+    .sys-x:hover { background: var(--accent); color: #000; }
+
+    .sys-body {
+      padding: 22px 22px 6px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-family: var(--mono);
+    }
+
+    .sys-icon {
+      font-size: 30px;
+      line-height: 1;
+      color: var(--accent);
+      flex-shrink: 0;
+      text-shadow: 0 0 14px rgba(0,255,65,.5);
+    }
+
+    .sys-head {
+      color: var(--heading);
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .sys-text {
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.85;
+    }
+
+    .sys-text .hi { color: var(--accent); }
+
+    .sys-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      padding: 12px 22px 0;
+      line-height: 1.8;
+    }
+
+    .sys-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      padding: 16px 22px 20px;
+    }
+
+    .sys-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 8px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #1d4d1d;
+      background: #000;
+      color: var(--text);
+      transition: background .15s, color .15s, border-color .15s;
+    }
+
+    .sys-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .sys-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .sys-btn.primary:hover { opacity: .85; color: #000; }
+
+    /* ── BGP AS-path table ────────────────────────────────────── */
+    .bgp-meta {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.9;
+      margin: 12px 0 14px;
+    }
+
+    .bgp-meta b { color: var(--accent); font-weight: normal; }
+
+    .bgp-scroll { overflow-x: auto; }
+
+    .bgp-table {
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .bgp-table th {
+      text-align: left;
+      font-weight: normal;
+      color: #2c552c;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 0 20px 6px 0;
+    }
+
+    .bgp-table td { padding: 4px 20px 4px 0; color: var(--text); }
+
+    .bgp-best { color: var(--accent); }
+    .bgp-path { color: var(--muted); }
+    .bgp-i    { color: #2c552c; }
+
+    .bgp-detail td { padding: 5px 20px 5px 0; line-height: 1.7; }
+    .bgp-as   { color: var(--accent); }
+    .bgp-org  { color: var(--heading); font-weight: bold; }
+    .bgp-yr   { color: var(--muted); font-size: 11px; }
+    .bgp-role { color: var(--text); font-size: 11.5px; }
+
+    .bgp-cur .bgp-org { color: var(--accent); }
+    .bgp-flag { color: var(--accent); font-size: 10px; margin-left: 6px; }
+
+    /* ── Footer uptime ────────────────────────────────────────── */
+    footer { padding-bottom: 56px; }
+
+    .foot-uptime {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .fu-line { display: block; color: var(--muted); margin-top: 4px; }
+    .fu-line b { color: var(--accent); font-weight: normal; }
+
+    .foot-credit { color: var(--muted); }
+
+    /* ── Bottom status bar ────────────────────────────────────── */
+    .statusbar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 7px 18px;
+      background: rgba(0,0,0,.94);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .03em;
+    }
+
+    .sb-item b { color: var(--accent); font-weight: normal; }
+    .sb-spacer { flex: 1; }
+
+    .sb-led {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 5px;
+      animation: sbBlink 2.2s ease-in-out infinite;
+      box-shadow: 0 0 6px rgba(0,255,65,.8);
+    }
+
+    @keyframes sbBlink {
+      0%, 92%, 100% { opacity: 1; }
+      95%           { opacity: .25; }
+    }
+
+    /* ── About: ipconfig + inventory ──────────────────────────── */
+    .about-stack { display: flex; flex-direction: column; gap: 20px; }
+
+    .ip-body {
+      padding: 18px 20px 22px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      overflow-x: auto;
+    }
+
+    .ip-cmd { color: var(--accent); margin-bottom: 4px; }
+
+    .ip-hdr {
+      color: var(--heading);
+      font-weight: bold;
+      margin: 14px 0 8px;
+    }
+
+    .ip-sep { height: 6px; }
+
+    .ip-row {
+      display: flex;
+      gap: 8px;
+      line-height: 1.95;
+      flex-wrap: wrap;
+    }
+
+    .ip-k { color: var(--muted); white-space: nowrap; }
+    .ip-dots { color: #163a16; letter-spacing: 1px; }
+    .ip-v { color: var(--text); }
+    .ip-v.hi { color: var(--heading); font-weight: bold; }
+    .ip-v.ok { color: var(--accent); }
+
+    /* show inventory */
+    .inv-list { margin-top: 14px; display: flex; flex-direction: column; gap: 14px; }
+
+    .inv-l1, .inv-l2 { line-height: 1.8; }
+    .inv-l1 { color: var(--muted); font-size: 12px; }
+    .inv-l2 { color: var(--muted); font-size: 11.5px; padding-left: 0; }
+    .inv-q   { color: var(--heading); }
+    .inv-pid { color: var(--accent); }
+    .inv-sn  { color: var(--text); }
+
+    .inv-foot {
+      margin-top: 16px;
+      color: #2c552c;
+      font-size: 11px;
+    }
+
+    .about-note {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.9;
+      padding: 16px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      border-radius: var(--radius);
+    }
+
+    .about-note b { color: var(--heading); }
+
+    /* ── Skills: show interfaces status ───────────────────────── */
+    .if-cmd {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .if-stack { display: flex; flex-direction: column; gap: 20px; }
+
+    .if-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .if-group-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #050d05;
+    }
+
+    .if-scroll { overflow-x: auto; }
+
+    .if-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 12px;
+      min-width: 560px;
+    }
+
+    .if-table th {
+      text-align: left;
+      font-weight: normal;
+      color: #2c552c;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .if-table td { padding: 9px 14px; vertical-align: top; }
+
+    .if-row { border-bottom: 1px solid #0a1c0a; transition: background .13s; }
+    .if-row:last-child { border-bottom: none; }
+    .if-row:hover { background: rgba(0,255,65,.035); }
+
+    .if-port { color: var(--muted); white-space: nowrap; }
+
+    .if-name {
+      color: var(--heading);
+      font-weight: bold;
+      min-width: 190px;
+    }
+
+    .if-note {
+      display: block;
+      color: var(--muted);
+      font-weight: normal;
+      font-size: 10.5px;
+      line-height: 1.6;
+      margin-top: 2px;
+    }
+
+    .if-status { white-space: nowrap; }
+    .if-status.up   { color: var(--accent); }
+    .if-status.idle { color: #7a6a1f; }
+
+    .if-speed { color: var(--text); white-space: nowrap; }
+    .if-lvl   { white-space: nowrap; }
+
+    .if-foot {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #2c552c;
+      margin-top: 18px;
+    }
+
+    /* ── Interactive shell ────────────────────────────────────── */
+    #shell { background: var(--bg); }
+
+    .shell-help {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin: -24px 0 24px;
+      line-height: 1.9;
+    }
+
+    .shell-help kbd {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: #001a00;
+      border: 1px solid #1d4d1d;
+      border-bottom-width: 2px;
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+
+    .sh-box { cursor: text; }
+
+    .sh-body {
+      padding: 16px 18px 18px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      height: 340px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #1d4d1d #000;
+    }
+
+    .sh-body::-webkit-scrollbar { width: 8px; }
+    .sh-body::-webkit-scrollbar-track { background: #000; }
+    .sh-body::-webkit-scrollbar-thumb { background: #1d4d1d; border-radius: 4px; }
+
+    .sh-out div { line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+
+    .sh-echo  { color: var(--accent); }
+    .sh-text  { color: var(--text); }
+    .sh-dim   { color: var(--muted); }
+    .sh-head  { color: var(--heading); font-weight: bold; }
+    .sh-ok    { color: var(--accent); }
+    .sh-err   { color: #ff5f57; }
+    .sh-warn  { color: #febc2e; }
+
+    .sh-out a { color: var(--accent); text-decoration: underline; }
+
+    .sh-input-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .sh-prompt { color: var(--accent2); flex-shrink: 0; }
+    #shPrompt.priv { color: #febc2e; }
+
+    .sh-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      caret-color: var(--accent);
+      padding: 0;
+      min-width: 0;
+    }
+
+    /* ── Ping (email) terminal ────────────────────────────────── */
+    .ping-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 450;
+      background: rgba(0,0,0,.86);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      opacity: 0;
+      transition: opacity .22s ease;
+    }
+
+    .ping-overlay[hidden] { display: none; }
+    .ping-overlay.show { opacity: 1; }
+
+    .ping-shell {
+      width: 100%;
+      max-width: 560px;
+      background: #000;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      overflow: hidden;
+      box-shadow: 0 0 44px rgba(0,255,65,.24), 0 0 3px rgba(0,255,65,.55);
+      transform: scale(.97);
+      transition: transform .22s ease;
+    }
+
+    .ping-overlay.show .ping-shell { transform: none; }
+
+    .ping-shell .terminal-titlebar { position: relative; }
+
+    .ping-x {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      background: none;
+      border: 1px solid #124d12;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1;
+      padding: 3px 8px;
+      cursor: pointer;
+    }
+
+    .ping-x:hover { background: var(--accent); color: #000; }
+
+    .ping-body {
+      padding: 18px 20px 22px;
+      font-family: var(--mono);
+      font-size: 13px;
+      min-height: 190px;
+    }
+
+    .ping-line { display: flex; align-items: center; }
+    .ping-cmd  { color: var(--accent); }
+
+    .ping-out { margin-top: 12px; font-size: 12.5px; }
+
+    .ping-out div {
+      color: var(--text);
+      line-height: 1.9;
+      opacity: 0;
+      transform: translateY(3px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .ping-out div.vis { opacity: 1; transform: none; }
+    .ping-out .ok  { color: var(--accent); }
+    .ping-out .dim { color: var(--muted); }
+
+    .ping-mail {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .ping-mail:hover { opacity: .85; text-decoration: none; }
+
+    /* ── Experience modal ─────────────────────────────────────── */
+    button.btn-ghost, button.btn-primary {
+      font-family: inherit;
+      cursor: pointer;
+      background: none;
+    }
+
+    button.btn-primary { background: var(--accent); }
+
+    .exp-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    .exp-overlay[hidden] { display: none; }
+    .exp-overlay.show { opacity: 1; }
+
+    .exp-shell {
+      width: 100%;
+      max-width: 900px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(0,255,65,.22), 0 0 3px rgba(0,255,65,.5);
+      transform: scale(.97);
+      transition: transform .25s ease;
+    }
+
+    .exp-overlay.show .exp-shell { transform: none; }
+
+    .exp-shell-bar {
+      flex-shrink: 0;
+      background: #00250b;
+      border-bottom: 1px solid #124d12;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--accent);
+      letter-spacing: .05em;
+    }
+
+    .exp-close {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: none;
+      border: 1px solid #124d12;
+      border-radius: 3px;
+      padding: 3px 9px;
+      cursor: pointer;
+      letter-spacing: .05em;
+    }
+
+    .exp-close:hover { background: var(--accent); color: #000; }
+
+    .exp-scroll {
+      overflow-y: auto;
+      padding: 22px 22px 26px;
+      scrollbar-width: thin;
+      scrollbar-color: #1d4d1d #000;
+    }
+
+    .exp-scroll::-webkit-scrollbar { width: 9px; }
+    .exp-scroll::-webkit-scrollbar-track { background: #000; }
+    .exp-scroll::-webkit-scrollbar-thumb {
+      background: #1d4d1d; border-radius: 5px;
+    }
+    .exp-scroll::-webkit-scrollbar-thumb:hover { background: var(--accent2); }
+
+    .exp-scroll .exp-help { margin: 0 0 18px; }
+
+    /* "more" toggle */
+    .more-wrap { display: flex; justify-content: center; }
+
+    .more-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      background: #001a00;
+      border: 1px dashed #1d4d1d;
+      border-radius: 6px;
+      padding: 11px 22px;
+      cursor: pointer;
+      width: 100%;
+      transition: background .15s, border-color .15s;
+    }
+
+    .more-btn:hover { background: #00250b; border-color: var(--accent); }
+
+    .more-caret { display: inline-block; transition: transform .25s ease; }
+    .more-btn[aria-expanded="true"] .more-caret { transform: rotate(180deg); }
+
+    .more-jobs {
+      display: none;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .more-jobs.open { display: flex; }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      .job-body { padding: 14px 14px 16px; font-size: 12px; }
+      .jk { width: 100%; }
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-name  { font-size: 34px; }
+      .hero-title { font-size: 13px; white-space: normal; }
+      .hero-certs { font-size: 11px; }
+      .hero-title .hp { margin: 0 4px; }
+      .hero-welcome { font-size: 11px; }
+      .hero-actions { justify-content: center; }
+      .hero-tags    { justify-content: center; }
+      .about-grid   { grid-template-columns: 1fr; }
+      .skills-grid  { grid-template-columns: 1fr; }
+      .sk-summary   { grid-template-columns: repeat(2, 1fr); }
+      .nav-links    { display: none; }
+      .contact-box  { padding: 28px 20px; }
+      .exp-shell    { max-height: 92vh; }
+      .exp-scroll   { padding: 16px 14px 20px; }
+    }
+
+    @media (max-width: 980px) and (min-width: 681px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title  { font-size: 15px; }
+      .hero-certs  { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── POST / BOOT SEQUENCE ────────────────────────────────────── -->
+<div class="boot" id="boot">
+  <div class="boot-inner" id="bootLines"></div>
+</div>
+
+<!-- ── BOOT WARNING DIALOG ─────────────────────────────────────── -->
+<div class="sys-overlay" id="sysOverlay" role="dialog" aria-modal="true" aria-labelledby="sysHead">
+  <div class="sys-dialog">
+    <div class="sys-bar">
+      <span>&#9888; SYSTEM NOTICE &mdash; sec-advisory.exe</span>
+      <button class="sys-x" id="sysX" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="sys-body">
+      <div class="sys-icon">&#9888;</div>
+      <div>
+        <div class="sys-head" id="sysHead">CAUTION: SECURED ZONE AHEAD</div>
+        <div class="sys-text">
+          You are entering <span class="hi">Dinesh Mekala's Personal Hacking Studio</span>.<br>
+          All packets on this segment are inspected, logged, and
+          <span class="hi">thoroughly over-engineered</span>.<br>
+          Firewalls are clustered. Routes are converged. Proceed with caution.
+        </div>
+      </div>
+    </div>
+    <div class="sys-meta">
+      Relax &mdash; this is a portfolio, not an actual intrusion.<br>
+      No systems were harmed in the making of this website.
+    </div>
+    <div class="sys-actions">
+      <button class="sys-btn" id="sysAbort">Abort</button>
+      <button class="sys-btn primary" id="sysOk">Proceed &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ─────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">dinesh.m ~</div>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#" class="js-exp">experience</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#shell">shell</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">contact →</a>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-avatar">DM</div>
+      <div>
+        <div class="hero-welcome">Welcome to Dinesh Mekala's Personal Hacking Studio<span class="wc">_</span></div>
+        <div class="hero-badge">
+          <span class="geo-pin" aria-hidden="true"></span>
+          <span class="geo-text">Tallahassee, FL</span>
+        </div>
+        <h1 class="hero-name">Dinesh Mekala</h1>
+        <p class="hero-title">Network Manager <span class="hp">|</span> <span class="hero-certs">CCIE <span class="hp">|</span> PCNSE <span class="hp">|</span> PMP <span class="hp">|</span> F5 CTS</span></p>
+        <div class="hero-actions">
+          <a href="https://www.linkedin.com/in/dnshm" target="_blank" rel="noopener noreferrer" class="btn-ghost js-ext">LinkedIn</a>
+          <button class="btn-primary js-ping" type="button">Email</button>
+          <button class="btn-ghost js-exp" type="button">experience &rarr;</button>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">Cisco · CCIE</span>
+          <span class="tag">Palo Alto · PCNSE</span>
+          <span class="tag">Azure</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Zscaler</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">PMP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ── ABOUT ───────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">00 / about</p>
+    <h2 class="section-title"><span>// </span>about</h2>
+
+    <div class="about-stack">
+
+      <!-- nslookup -->
+      <div class="terminal-box">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; nslookup</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">C:\Users\Dinesh&gt;&nbsp;</span><span class="t-cmd" id="t-cmd"></span><span class="t-cursor" id="t-cursor">&block;</span>
+          </div>
+          <div class="t-output" id="t-output"></div>
+        </div>
+      </div>
+
+      <!-- ipconfig /all -->
+      <div class="terminal-box">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; ipconfig</span>
+        </div>
+        <div class="ip-body">
+          <div class="ip-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> ipconfig /all</div>
+          <div class="ip-hdr" style="margin-top:14px;">Windows IP Configuration</div>
+            <div class="ip-row"><span class="ip-k">Host Name <span class="ip-dots">.....................</span>:</span><span class="ip-v hi">dinesh</span></div>
+            <div class="ip-row"><span class="ip-k">Primary DNS Suffix <span class="ip-dots">............</span>:</span><span class="ip-v">dinesh.net</span></div>
+            <div class="ip-row"><span class="ip-k">Node Type <span class="ip-dots">.....................</span>:</span><span class="ip-v hi">Senior Network Architect</span></div>
+            <div class="ip-row"><span class="ip-k">IP Routing Enabled <span class="ip-dots">............</span>:</span><span class="ip-v ok">Yes</span></div>
+            <div class="ip-row"><span class="ip-k">WINS Proxy Enabled <span class="ip-dots">............</span>:</span><span class="ip-v">No</span></div>
+            <div class="ip-row"><span class="ip-k">DNS Suffix Search List <span class="ip-dots">........</span>:</span><span class="ip-v">azure.local  aws.local  onprem.local</span></div>
+            <div class="ip-sep">&nbsp;</div>
+            <div class="ip-hdr">Ethernet adapter Career:</div>
+            <div class="ip-row"><span class="ip-k">Connection-specific DNS <span class="ip-dots">.......</span>:</span><span class="ip-v">tallahassee.fl.gov</span></div>
+            <div class="ip-row"><span class="ip-k">Description <span class="ip-dots">...................</span>:</span><span class="ip-v hi">Network Manager, City of Tallahassee</span></div>
+            <div class="ip-row"><span class="ip-k">Physical Address <span class="ip-dots">..............</span>:</span><span class="ip-v ok">CC-IE-PC-NS-EP-MP</span></div>
+            <div class="ip-row"><span class="ip-k">DHCP Enabled <span class="ip-dots">..................</span>:</span><span class="ip-v">No  (static, by design)</span></div>
+            <div class="ip-row"><span class="ip-k">IPv4 Address <span class="ip-dots">..................</span>:</span><span class="ip-v hi">10.0.0.1  (Preferred)</span></div>
+            <div class="ip-row"><span class="ip-k">Subnet Mask <span class="ip-dots">...................</span>:</span><span class="ip-v">255.255.255.0</span></div>
+            <div class="ip-row"><span class="ip-k">Default Gateway <span class="ip-dots">...............</span>:</span><span class="ip-v">cloud.azure.net</span></div>
+            <div class="ip-row"><span class="ip-k">Lease Obtained <span class="ip-dots">................</span>:</span><span class="ip-v">Monday, December 1, 2014</span></div>
+            <div class="ip-row"><span class="ip-k">Lease Expires <span class="ip-dots">.................</span>:</span><span class="ip-v ok">Never  (renewing indefinitely)</span></div>
+            <div class="ip-sep">&nbsp;</div>
+            <div class="ip-hdr">Specializations:</div>
+            <div class="ip-row"><span class="ip-k">Cloud Migrations <span class="ip-dots">..............</span>:</span><span class="ip-v">Azure &amp; AWS, zero-downtime cutover</span></div>
+            <div class="ip-row"><span class="ip-k">Network Security <span class="ip-dots">..............</span>:</span><span class="ip-v">Palo Alto, Cisco ASA/Firepower, Zscaler, CrowdStrike</span></div>
+            <div class="ip-row"><span class="ip-k">Automation <span class="ip-dots">....................</span>:</span><span class="ip-v">Ansible, Terraform, TCL, GitOps</span></div>
+            <div class="ip-row"><span class="ip-k">Wireless Security <span class="ip-dots">.............</span>:</span><span class="ip-v">ISE, WLC, EAP-TLS, WPA3, RADIUS</span></div>
+            <div class="ip-row"><span class="ip-k">Load Balancing <span class="ip-dots">................</span>:</span><span class="ip-v">F5 BIG-IP &mdash; LTM, GTM, ASM, APM, AFM</span></div>
+        </div>
+      </div>
+
+      <!-- show inventory -->
+      <div class="terminal-box">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">dinesh&gt; show inventory</span>
+        </div>
+        <div class="ip-body">
+          <div class="ip-cmd"><span class="t-prompt">dinesh&gt;</span> show inventory</div>
+          <div class="inv-list">
+            <div class="inv-item">
+              <div class="inv-l1">NAME: <span class="inv-q">"CCIE"</span>,  DESCR: <span class="inv-q">"Cisco Certified Internetwork Expert"</span></div>
+              <div class="inv-l2">PID: <span class="inv-pid">CCIE-RS</span>   VID: V01   SN: <span class="inv-sn">Cisco</span></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-l1">NAME: <span class="inv-q">"PCNSE"</span>,  DESCR: <span class="inv-q">"Networks Security Engineer"</span></div>
+              <div class="inv-l2">PID: <span class="inv-pid">PCNSE-11</span>   VID: V01   SN: <span class="inv-sn">Palo Alto Networks</span></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-l1">NAME: <span class="inv-q">"PMP"</span>,  DESCR: <span class="inv-q">"Project Management Professional"</span></div>
+              <div class="inv-l2">PID: <span class="inv-pid">PMP-2024</span>   VID: V01   SN: <span class="inv-sn">PMI</span></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-l1">NAME: <span class="inv-q">"F5 CTS"</span>,  DESCR: <span class="inv-q">"Certified Technology Specialist"</span></div>
+              <div class="inv-l2">PID: <span class="inv-pid">F5-CTS</span>   VID: V01   SN: <span class="inv-sn">F5 Networks</span></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-l1">NAME: <span class="inv-q">"JNCIS"</span>,  DESCR: <span class="inv-q">"Networks Certified Specialist"</span></div>
+              <div class="inv-l2">PID: <span class="inv-pid">JNCIS-ENT</span>   VID: V01   SN: <span class="inv-sn">Juniper Networks</span></div>
+            </div>
+            <div class="inv-item">
+              <div class="inv-l1">NAME: <span class="inv-q">"TWIC"</span>,  DESCR: <span class="inv-q">"Transportation Worker ID Credential"</span></div>
+              <div class="inv-l2">PID: <span class="inv-pid">TWIC-US</span>   VID: V01   SN: <span class="inv-sn">TSA</span></div>
+            </div>
+          </div>
+          <div class="inv-foot">6 credential(s) installed &middot; all active</div>
+        </div>
+      </div>
+
+      <!-- show ip bgp — career as an AS path -->
+      <div class="terminal-box">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">dinesh&gt; show ip bgp</span>
+        </div>
+        <div class="ip-body">
+          <div class="ip-cmd"><span class="t-prompt">dinesh&gt;</span> show ip bgp career</div>
+
+          <div class="bgp-meta">BGP table version is 26, local router ID is 10.0.0.1<br>
+          Status codes: <b>*</b> valid, <b>&gt;</b> best, <b>i</b> internal</div>
+
+          <div class="bgp-scroll">
+            <table class="bgp-table">
+              <thead>
+                <tr><th></th><th>Network</th><th>Next Hop</th><th>Metric</th><th>Path</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bgp-best">*&gt;</td>
+                  <td>career/32</td>
+                  <td>10.0.0.1</td>
+                  <td>0</td>
+                  <td class="bgp-path">14 16 17 19 20 22 23 24 25 26 <span class="bgp-i">i</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ip-hdr" style="margin-top:20px;">AS-PATH detail:</div>
+          <div class="bgp-scroll">
+            <table class="bgp-table bgp-detail">
+              <tbody>
+                <tr><td class="bgp-as">14</td><td class="bgp-org">Wipro</td><td class="bgp-yr">2014 &ndash; 2016</td><td class="bgp-role">Assistant Network Engineer</td></tr>
+                <tr><td class="bgp-as">16</td><td class="bgp-org">Nielsen</td><td class="bgp-yr">2016 &ndash; 2017</td><td class="bgp-role">Sr. Network Engineer</td></tr>
+                <tr><td class="bgp-as">17</td><td class="bgp-org">Biogen</td><td class="bgp-yr">2017 &ndash; 2019</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                <tr><td class="bgp-as">19</td><td class="bgp-org">State of Idaho</td><td class="bgp-yr">2019 &ndash; 2020</td><td class="bgp-role">Sr. Network Engineer</td></tr>
+                <tr><td class="bgp-as">20</td><td class="bgp-org">AbbVie</td><td class="bgp-yr">2020 &ndash; 2022</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                <tr><td class="bgp-as">22</td><td class="bgp-org">Callaway Golf</td><td class="bgp-yr">2022 &ndash; 2023</td><td class="bgp-role">Sr. Network Engineer / NOC Lead</td></tr>
+                <tr><td class="bgp-as">23</td><td class="bgp-org">Arch Technology</td><td class="bgp-yr">2023</td><td class="bgp-role">TAAC Support Engineer L5</td></tr>
+                <tr><td class="bgp-as">24</td><td class="bgp-org">OSF HealthCare</td><td class="bgp-yr">2024 &ndash; 2025</td><td class="bgp-role">Senior Network Architect</td></tr>
+                <tr><td class="bgp-as">25</td><td class="bgp-org">CTS Corporation</td><td class="bgp-yr">2025 &ndash; 2026</td><td class="bgp-role">Sr. Network Security Engineer</td></tr>
+                <tr class="bgp-cur"><td class="bgp-as">26</td><td class="bgp-org">City of Tallahassee</td><td class="bgp-yr">2026 &ndash; present</td><td class="bgp-role">Network Manager <span class="bgp-flag">[best]</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="inv-foot">10 AS hop(s) &middot; path selected, no loops detected</div>
+        </div>
+      </div>
+
+      <p class="about-note">
+        Available for full-time roles in <b>Network Architecture, Cloud Infrastructure,
+        and Security Engineering</b> &mdash; remote, on-site, or hybrid.
+        TWIC card holder. Open to relocation.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ──────────────────────────────────────────────────── -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">01 / skills</p>
+    <h2 class="section-title"><span>// </span>show interfaces status</h2>
+
+    <div class="sk-summary">
+      <div class="sk-stat"><b>56</b><span>interfaces up</span></div>
+      <div class="sk-stat"><b>35</b><span>at 10G / expert</span></div>
+      <div class="sk-stat"><b>9</b><span>line cards</span></div>
+      <div class="sk-stat"><b>10+</b><span>years in production</span></div>
+    </div>
+
+    <div class="if-cmd"><span class="t-prompt">dinesh&gt;</span> show interfaces status</div>
+
+    <div class="if-stack">
+        <div class="if-group">
+          <div class="if-group-title">cloud & infrastructure</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Gi1/0/1</td>
+                <td class="if-name">Microsoft Azure<span class="if-note">VNet, ExpressRoute, NSG, full prod migration</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi1/0/2</td>
+                <td class="if-name">AWS<span class="if-note">EC2, S3, VPC, Direct Connect, TGW</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi1/0/3</td>
+                <td class="if-name">Terraform<span class="if-note">AWS connectivity pipelines, reusable modules</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi1/0/4</td>
+                <td class="if-name">Ansible<span class="if-note">Network device automation at scale</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi1/0/5</td>
+                <td class="if-name">Prisma Cloud<span class="if-note">Automated compliance + posture monitoring</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi1/0/6</td>
+                <td class="if-name">Hybrid Cloud Design<span class="if-note">On-prem to cloud, zero-downtime cutover</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">firewalls & NGFW</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/1</td>
+                <td class="if-name">Palo Alto (PCNSE)<span class="if-note">PA-6050 HA cluster, 7080, M-600, Panorama</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/2</td>
+                <td class="if-name">Cisco ASA / Firepower<span class="if-note">Policy, NAT, remote access VPN</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/3</td>
+                <td class="if-name">FortiGate<span class="if-note">FortiManager, FortiAnalyzer, HA, VPN routing</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/4</td>
+                <td class="if-name">Checkpoint<span class="if-note">Policy management, PCI audit cycles</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/5</td>
+                <td class="if-name">Juniper SRX<span class="if-note">High-compliance government deployments</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi2/0/6</td>
+                <td class="if-name">Firewall Migration<span class="if-note">Vendor-to-vendor rule conversion</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">zero trust & sec ops</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/1</td>
+                <td class="if-name">Zscaler ZIA / ZPA<span class="if-note">IronPort to Zscaler Cloud migration</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/2</td>
+                <td class="if-name">Zero Trust Access<span class="if-note">ZTNA rollout, global pharma scale</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/3</td>
+                <td class="if-name">Illumio<span class="if-note">Enterprise-wide microsegmentation</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/4</td>
+                <td class="if-name">Cisco ISE<span class="if-note">802.1X, posture, guest, TrustSec</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/5</td>
+                <td class="if-name">CrowdStrike<span class="if-note">Endpoint integration across MSP estates</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/6</td>
+                <td class="if-name">SIEM & Detection<span class="if-note">Splunk correlation, alerting, SOPs</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Gi3/0/7</td>
+                <td class="if-name">IDS / IPS<span class="if-note">Signature tuning, FP reduction</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">routing & switching</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/1</td>
+                <td class="if-name">BGP<span class="if-note">iBGP, eBGP, MP-BGP, route policy, global WAN</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/2</td>
+                <td class="if-name">OSPF / EIGRP<span class="if-note">Multi-area design, redistribution</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/3</td>
+                <td class="if-name">MPLS<span class="if-note">L3VPN, global carrier circuits</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/4</td>
+                <td class="if-name">Cisco Nexus<span class="if-note">7K / 5K / 2K, vPC, FEX, DC fabric</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/5</td>
+                <td class="if-name">Cisco Catalyst<span class="if-note">Campus core, access, stacking</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/6</td>
+                <td class="if-name">Arista<span class="if-note">Data center leaf-spine</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/7</td>
+                <td class="if-name">Extreme Networks<span class="if-note">Full Nexus/Catalyst migration target</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te1/0/8</td>
+                <td class="if-name">HSRP / VRRP<span class="if-note">First-hop redundancy across cores</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">SD-WAN & campus</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Te2/0/1</td>
+                <td class="if-name">SD-WAN<span class="if-note">Multi-site enterprise overlay design</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te2/0/2</td>
+                <td class="if-name">Cisco Meraki<span class="if-note">Cloud-managed switching + security</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te2/0/3</td>
+                <td class="if-name">Cisco DNA Center<span class="if-note">SD-Access campus segmentation</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te2/0/4</td>
+                <td class="if-name">VLAN / L2 Design<span class="if-note">Segmentation, STP, trunking</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Te2/0/5</td>
+                <td class="if-name">NAT / ACLs<span class="if-note">Multi-site client activations</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">load balancing</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Po1/0/1</td>
+                <td class="if-name">F5 LTM<span class="if-note">Pools, monitors, iRules, SSL offload</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Po1/0/2</td>
+                <td class="if-name">F5 GTM<span class="if-note">GSLB, wide IPs, DR failover</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Po1/0/3</td>
+                <td class="if-name">F5 ASM<span class="if-note">WAF policy, L7 protection</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Po1/0/4</td>
+                <td class="if-name">F5 APM<span class="if-note">Access policy, SSO integration</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Po1/0/5</td>
+                <td class="if-name">F5 AFM<span class="if-note">Network firewall module</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Po1/0/6</td>
+                <td class="if-name">Traffic Steering<span class="if-note">99.5% uptime across managed clients</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">wireless</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Wl1/0/1</td>
+                <td class="if-name">Cisco WLC<span class="if-note">Controller design, RF tuning</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Wl1/0/2</td>
+                <td class="if-name">EAP-TLS / 802.1X<span class="if-note">Certificate-based enterprise auth</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Wl1/0/3</td>
+                <td class="if-name">WPA3 / RADIUS<span class="if-note">Government facility deployments</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Wl1/0/4</td>
+                <td class="if-name">Aruba Wireless<span class="if-note">High-density campus coverage</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Wl1/0/5</td>
+                <td class="if-name">Ekahau / AirMagnet<span class="if-note">Predictive and validation surveys</span></td>
+                <td class="if-status idle">notconnect</td>
+                <td class="if-speed">auto</td>
+                <td class="if-lvl"><span class="skill-level familiar">familiar</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">automation & tooling</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/1</td>
+                <td class="if-name">Ansible<span class="if-note">Playbooks for config + deployment</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/2</td>
+                <td class="if-name">Python<span class="if-note">Network scripting, parsing, API work</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/3</td>
+                <td class="if-name">TCL<span class="if-note">Device-side automation</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/4</td>
+                <td class="if-name">GitOps<span class="if-note">Config mgmt, faster site activations</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/5</td>
+                <td class="if-name">Wireshark<span class="if-note">Deep packet analysis, root cause</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/6</td>
+                <td class="if-name">Splunk<span class="if-note">Log correlation, dashboards</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Lo0/0/7</td>
+                <td class="if-name">SolarWinds<span class="if-note">NPM monitoring, alerting</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">1000</td>
+                <td class="if-lvl"><span class="skill-level proficient">proficient</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="if-group">
+          <div class="if-group-title">compliance & leadership</div>
+          <div class="if-scroll">
+            <table class="if-table">
+              <thead>
+                <tr>
+                  <th>Port</th><th>Name</th><th>Status</th><th>Speed</th><th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="if-row">
+                <td class="if-port">Mg0/0/1</td>
+                <td class="if-name">PCI-DSS<span class="if-note">Firewall auditing, segmentation validation</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Mg0/0/2</td>
+                <td class="if-name">HIPAA / Healthcare<span class="if-note">Clinical network + data protection</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Mg0/0/3</td>
+                <td class="if-name">Government Compliance<span class="if-note">State agency, high-assurance networks</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Mg0/0/4</td>
+                <td class="if-name">PMP<span class="if-note">Project delivery, stakeholder management</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Mg0/0/5</td>
+                <td class="if-name">NOC Leadership<span class="if-note">24/7 ops, incident command</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              <tr class="if-row">
+                <td class="if-port">Mg0/0/6</td>
+                <td class="if-name">Mentoring<span class="if-note">Junior engineer training, SOP authoring</span></td>
+                <td class="if-status up">connected</td>
+                <td class="if-speed">10G</td>
+                <td class="if-lvl"><span class="skill-level expert">expert</span></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
+    <div class="if-foot">56 interface(s) listed &middot; 35 operating at 10G</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ── INTERACTIVE SHELL ───────────────────────────────────────── -->
+<section id="shell">
+  <div class="container">
+    <p class="section-label">02 / shell</p>
+    <h2 class="section-title"><span>// </span>try it yourself</h2>
+    <p class="shell-help">A working prompt. Type <kbd>help</kbd> to see what it knows.
+      Arrow keys walk your history.</p>
+
+    <div class="terminal-box sh-box" id="shBox">
+      <div class="terminal-titlebar">
+        <span class="t-dot" style="background:#ff5f57"></span>
+        <span class="t-dot" style="background:#febc2e"></span>
+        <span class="t-dot" style="background:#28c840"></span>
+        <span class="t-title">dinesh@portfolio &mdash; bash</span>
+      </div>
+      <div class="sh-body" id="shBody">
+        <div class="sh-out" id="shOut"></div>
+        <div class="sh-input-line">
+          <span class="sh-prompt" id="shPrompt">dinesh&gt;</span>
+          <input class="sh-input" id="shInput" type="text" autocomplete="off"
+                 spellcheck="false" aria-label="Terminal input" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ── CONTACT ──────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">03 / contact</p>
+    <h2 class="section-title"><span>// </span>establish-connection</h2>
+    <div class="contact-box">
+      <h3>// let's build something secure</h3>
+      <p>
+        Available for full-time roles in Network Architecture, Cloud Infrastructure, and Security Engineering.
+        Remote, on-site, or hybrid. Open to relocation.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:dineshmmekala@gmail.com" class="btn-primary js-email" data-email="dineshmmekala@gmail.com">Email me</a>
+        <a href="https://www.linkedin.com/in/dnshm" target="_blank" rel="noopener noreferrer" class="btn-ghost js-ext">LinkedIn</a>
+        <a href="tel:+19728506424" class="btn-ghost">+1 972-850-6424</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────────────────────────── -->
+<footer>
+  <div class="foot-uptime">
+    <span class="t-prompt">dinesh&gt;</span> show version
+    <span class="fu-line">System uptime: <b id="uptime">calculating...</b></span>
+  </div>
+  <div class="foot-credit">crafted packet-by-packet · © 2026 Dinesh Mekala</div>
+</footer>
+
+<!-- ── STATUS BAR ──────────────────────────────────────────────── -->
+<div class="statusbar" id="statusbar">
+  <span class="sb-item"><i class="sb-led"></i> link: <b>up</b></span>
+  <span class="sb-item">duplex: <b>full</b></span>
+  <span class="sb-item">speed: <b>1000Mb/s</b></span>
+  <span class="sb-item sb-hide-sm">pkts: <b id="sbPkts">0</b></span>
+  <span class="sb-spacer"></span>
+  <span class="sb-item sb-hide-sm">CPU <b id="sbCpu">3%</b></span>
+  <span class="sb-item"><b id="sbClock">--:--:--</b></span>
+</div>
+
+<!-- ── PING (EMAIL) TERMINAL ───────────────────────────────────── -->
+<div class="ping-overlay" id="pingOverlay" role="dialog" aria-modal="true"
+     aria-labelledby="pingTitle" hidden>
+  <div class="ping-shell">
+    <div class="terminal-titlebar">
+      <span class="t-dot" style="background:#ff5f57"></span>
+      <span class="t-dot" style="background:#febc2e"></span>
+      <span class="t-dot" style="background:#28c840"></span>
+      <span class="t-title" id="pingTitle">cmd.exe &mdash; ping</span>
+      <button class="ping-x" id="pingX" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="ping-body">
+      <div class="ping-line">
+        <span class="t-prompt">C:\Users\Dinesh&gt;&nbsp;</span><span class="ping-cmd" id="pingCmd"></span><span class="t-cursor" id="pingCaret">&block;</span>
+      </div>
+      <div class="ping-out" id="pingOut"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE MODAL ────────────────────────────────────────── -->
+<div class="exp-overlay" id="expOverlay" role="dialog" aria-modal="true"
+     aria-labelledby="expTitle" hidden>
+  <div class="exp-shell">
+    <div class="exp-shell-bar">
+      <span id="expTitle">&#9632; career.log &mdash; 10 roles &middot; 2014 &rarr; present</span>
+      <button class="exp-close" id="expClose" aria-label="Close experience">&#10005; ESC</button>
+    </div>
+
+    <div class="exp-scroll">
+      <p class="exp-help">Click a window, or focus it and press
+        <kbd>Y</kbd> / <kbd>Enter</kbd>, to print the full log.</p>
+
+      <div class="job-stack">
+      <div class="job-term" data-slug="city-of-tallahassee" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Network Manager at City of Tallahassee — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 01</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 01</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Jun 2026 — Present</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Tallahassee, FL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">City of Tallahassee<span class="job-badge">ACTIVE</span></span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Network Manager</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type city-of-tallahassee.log</div>
+            <ul class="job-bullets">
+                <li>Leading network operations and infrastructure management for the City of Tallahassee.</li>
+                <li>Overseeing enterprise-wide network strategy, upgrades, and team coordination.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Government</span>
+                <span>Network Management</span>
+                <span>Enterprise Infrastructure</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="cts-corporation" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Senior Network Security Engineer at CTS Corporation — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 02</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 02</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Sep 2025 — Jul 2026</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">United States</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">CTS Corporation</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Senior Network Security Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type cts-corporation.log</div>
+            <ul class="job-bullets">
+                <li>Architected Cisco and Meraki switching environments using VLAN, LAN, and SD-WAN for enterprise connectivity.</li>
+                <li>Implemented FortiGate firewalls via FortiManager and FortiAnalyzer to manage HA, VPN routing, and centralized security logging.</li>
+                <li>Secured production environments by integrating CrowdStrike, IDS/IPS, and RADIUS controls across managed service infrastructures.</li>
+                <li>Executed advanced troubleshooting via Wireshark and Splunk, maintaining 99.9% uptime for critical business systems.</li>
+                <li>Coordinated with MSP partners and internal stakeholders on complex change requests and on-call incident responses.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Cisco / Meraki</span>
+                <span>FortiGate</span>
+                <span>CrowdStrike</span>
+                <span>SD-WAN</span>
+                <span>Splunk</span>
+                <span>Wireshark</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="osf-healthcare" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Senior Network Architect at OSF HealthCare — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 03</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 03</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Jan 2024 — Sep 2025</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Peoria, IL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">OSF HealthCare</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Senior Network Architect</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type osf-healthcare.log</div>
+            <ul class="job-bullets">
+                <li>Migrated Cisco Nexus &amp; Catalyst infrastructure to Extreme Networks with zero downtime.</li>
+                <li>Designed and executed a full Azure cloud migration for healthcare workloads.</li>
+                <li>Automated network deployment and configuration management using Ansible.</li>
+                <li>Clustered 6x Palo Alto PA-6050s for high-availability zero-downtime firewalling.</li>
+                <li>Reduced incident response time by 40% through improved monitoring and runbook automation.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Azure</span>
+                <span>Palo Alto PA-6050</span>
+                <span>Ansible</span>
+                <span>Cisco Nexus</span>
+                <span>Extreme Networks</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="arch-technology-solutions" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="TAAC Support Engineer L5 / Technical Application Consultant at Arch Technology Solutions — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 04</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 04</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">May 2023 — Dec 2023</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Oklahoma, United States</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Arch Technology Solutions</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">TAAC Support Engineer L5 / Technical Application Consultant</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type arch-technology-solutions.log</div>
+            <ul class="job-bullets">
+                <li>Managed F5 BIG-IP modules: LTM, ASM, APM, and AFM for global enterprise clients.</li>
+                <li>Provided Level 3 technical support resolving complex F5 network incidents in multi-tenant MSP environments.</li>
+                <li>Achieved 99.5% uptime for managed client applications through proactive traffic steering and SSL offload optimization.</li>
+                <li>Trained junior engineers and developed comprehensive technical documentation and SOPs.</li>
+            </ul>
+            <div class="job-tags">
+                <span>F5 BIG-IP</span>
+                <span>LTM / ASM / APM / AFM</span>
+                <span>MSP</span>
+                <span>SSL Offload</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="callaway-golf" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Engineer / NOC Lead at Callaway Golf — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 05</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 05</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Aug 2022 — May 2023</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Dallas-Fort Worth, TX</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Callaway Golf</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Engineer / NOC Lead</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type callaway-golf.log</div>
+            <ul class="job-bullets">
+                <li>Led NOC operations during a major hybrid infrastructure upgrade.</li>
+                <li>Designed high-availability network solutions using OSPF and BGP for data center migrations.</li>
+                <li>Secured hybrid cloud environments integrating Fortinet NGFWs and Palo Alto firewalls with AWS architectures.</li>
+                <li>Built Terraform-based AWS connectivity pipelines with Prisma Cloud for automated compliance and security monitoring.</li>
+                <li>Configured Cisco Nexus 7k/5k/2k platforms for scalable data center fabric and high-throughput delivery.</li>
+            </ul>
+            <div class="job-tags">
+                <span>OSPF / BGP</span>
+                <span>Fortinet</span>
+                <span>AWS</span>
+                <span>Terraform</span>
+                <span>Prisma Cloud</span>
+                <span>Cisco Nexus</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+
+        <div class="more-wrap">
+          <button class="more-btn" id="moreBtn" type="button"
+                  aria-expanded="false" aria-controls="moreJobs">
+            <span class="more-caret">&#9660;</span> more &mdash; 5 earlier roles (2014 &ndash; 2022)
+          </button>
+        </div>
+
+        <div class="more-jobs" id="moreJobs">
+      <div class="job-term" data-slug="abbvie" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network / Network Security Engineer at AbbVie — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 06</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 06</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Jul 2020 — Aug 2022</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Chicago, IL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">AbbVie</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network / Network Security Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type abbvie.log</div>
+            <ul class="job-bullets">
+                <li>Migrated IronPort email security platform to Zscaler Cloud, improving threat detection and management.</li>
+                <li>Supported Zero Trust Network Access deployment across global pharmaceutical operations.</li>
+                <li>Managed large-scale WAN environments using iBGP, eBGP, and MPLS.</li>
+                <li>Automated campus networking segmentation via Cisco DNA Center for SD-Access.</li>
+                <li>Configured Palo Alto 7080 and M-600 firewalls to protect sensitive clinical data.</li>
+                <li>Integrated Illumio for microsegmentation across the enterprise network.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Zscaler</span>
+                <span>Zero Trust</span>
+                <span>Cisco DNA / SD-Access</span>
+                <span>iBGP / eBGP / MPLS</span>
+                <span>Illumio</span>
+                <span>Palo Alto 7080</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="state-of-idaho-department-of-labor" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Engineer at State of Idaho, Department of Labor — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 07</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 07</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Apr 2019 — May 2020</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Boise, ID</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">State of Idaho, Department of Labor</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type state-of-idaho-department-of-labor.log</div>
+            <ul class="job-bullets">
+                <li>Managed F5 LTM &amp; GTM load balancers in a high-compliance government environment.</li>
+                <li>Deployed Palo Alto &amp; Fortinet firewalls alongside Juniper SRX and Checkpoint in government facilities.</li>
+                <li>Designed and deployed secure wireless networks (802.11x) using WPA3 and RADIUS authentication.</li>
+                <li>Integrated AWS Direct Connect for secure access to cloud-based citizen services.</li>
+            </ul>
+            <div class="job-tags">
+                <span>F5 LTM / GTM</span>
+                <span>Fortinet</span>
+                <span>Juniper SRX</span>
+                <span>AWS Direct Connect</span>
+                <span>WPA3 / RADIUS</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="biogen" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Security Engineer at Biogen — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 08</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 08</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Dec 2017 — Mar 2019</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Cambridge, MA</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Biogen</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Security Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type biogen.log</div>
+            <ul class="job-bullets">
+                <li>Directed data center migrations using Cisco Nexus 7K/5K and optimized app availability with F5 LTM/GTM.</li>
+                <li>Engineered Cisco and Aruba wireless solutions using Ekahau and AirMagnet for site-wide high-density coverage.</li>
+                <li>Managed VPN, IPSec, DLP, anti-spam, and endpoint security policies.</li>
+                <li>Maintained PCI compliance through rigorous Checkpoint firewall auditing and VPN security management.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Cisco Nexus 7K/5K</span>
+                <span>F5 LTM/GTM</span>
+                <span>Checkpoint</span>
+                <span>IPSec / VPN</span>
+                <span>PCI Compliance</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="nielsen" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Sr. Network Engineer at Nielsen — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 09</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 09</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Oct 2016 — Nov 2017</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Tampa, FL</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Nielsen</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Sr. Network Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type nielsen.log</div>
+            <ul class="job-bullets">
+                <li>Managed complex VPN migrations and firewall upgrades across Checkpoint, Palo Alto, and Cisco ASA platforms.</li>
+                <li>Optimized WAN performance using Riverbed Steelhead and conducted deep packet analysis for threat mitigation.</li>
+                <li>Developed vulnerability reports and security SOPs for global network operations centers.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Checkpoint</span>
+                <span>Cisco ASA</span>
+                <span>Riverbed Steelhead</span>
+                <span>VPN Migration</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+      <div class="job-term" data-slug="wipro" tabindex="0"
+           role="button" aria-expanded="false"
+           aria-label="Assistant Network Engineer at Wipro — press Enter or Y for details">
+        <div class="terminal-titlebar">
+          <span class="t-dot" style="background:#ff5f57"></span>
+          <span class="t-dot" style="background:#febc2e"></span>
+          <span class="t-dot" style="background:#28c840"></span>
+          <span class="t-title">cmd.exe &mdash; hop 10</span>
+        </div>
+        <div class="job-body">
+          <div class="job-cmd"><span class="t-prompt">C:\Users\Dinesh&gt;</span> query --hop 10</div>
+
+          <div class="job-kv"><span class="jk">Date</span><span class="jv">Dec 2014 — Aug 2016</span></div>
+          <div class="job-kv"><span class="jk">Location</span><span class="jv">Hyderabad, India</span></div>
+          <div class="job-kv"><span class="jk">Company</span><span class="jv jv-hi">Wipro</span></div>
+          <div class="job-kv"><span class="jk">Role</span><span class="jv">Assistant Network Engineer</span></div>
+
+          <div class="job-ask">View full log? [<b>Y</b>/N] <span class="job-caret">&block;</span></div>
+
+          <div class="job-detail">
+            <div class="job-echo"><span class="t-prompt">C:\Users\Dinesh&gt;</span> type wipro.log</div>
+            <ul class="job-bullets">
+                <li>Supported L2/L3 routing and switching for global delivery centers using Cisco and Juniper EX/ACX hardware.</li>
+                <li>Configured NAT, ACLs, MP-BGP, and OSPF to support multi-site client activations.</li>
+                <li>Monitored network health using SolarWinds and assisted in site circuit troubleshooting and hardware provisioning.</li>
+            </ul>
+            <div class="job-tags">
+                <span>Cisco / Juniper</span>
+                <span>MP-BGP / OSPF</span>
+                <span>NAT / ACLs</span>
+                <span>SolarWinds</span>
+            </div>
+            <div class="job-eof">-- end of file --</div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── nslookup terminal animation ──────────────────────────────
+  const CMD     = 'nslookup Dinesh';
+  const OUTPUT  = [
+    { key: 'Server:   ',  val: 'call.dinesh.net'             },
+    { key: 'Address:  ',  val: '972.850.6424'                },
+    { key: '',            val: ''                            },
+    { key: 'Name:     ',  val: 'Dinesh Mekala'                    },
+    { key: 'Email:    ',  val: 'dineshmmekala@gmail.com'     },
+    { key: 'Location: ',  val: 'Tallahassee, FL'             },
+  ];
+
+  const cmdEl    = document.getElementById('t-cmd');
+  const cursorEl = document.getElementById('t-cursor');
+  const outEl    = document.getElementById('t-output');
+
+  let started = false;
+
+  function runTerminal() {
+    if (started) return;
+    started = true;
+
+    // Type the command character by character
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      cmdEl.textContent += CMD[i++];
+      if (i >= CMD.length) {
+        clearInterval(typeInterval);
+        // "Enter" pressed — hide cursor, show output lines
+        setTimeout(() => {
+          cursorEl.style.display = 'none';
+          showOutputLines();
+        }, 300);
+      }
+    }, 70);
+  }
+
+  function showOutputLines() {
+    OUTPUT.forEach((row, idx) => {
+      const div = document.createElement('div');
+      div.className = 't-out-line';
+      if (row.key === '' && row.val === '') {
+        div.innerHTML = '&nbsp;';
+      } else {
+        div.innerHTML = `<span class="t-out-key">${row.key}</span><span class="t-out-val">${row.val}</span>`;
+      }
+      outEl.appendChild(div);
+
+      setTimeout(() => div.classList.add('visible'), idx * 140 + 80);
+    });
+  }
+
+  // Trigger when the about section scrolls into view
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      setTimeout(runTerminal, 300);
+      observer.disconnect();
+    }
+  }, { threshold: 0.3 });
+
+  observer.observe(document.getElementById('about'));
+
+  // ── POST / boot sequence, then the warning dialog ────────────
+  (function () {
+    const boot  = document.getElementById('boot');
+    const lines = document.getElementById('bootLines');
+    if (!boot) return;
+
+    let seen = false;
+    try { seen = sessionStorage.getItem('sysSeen') === '1'; } catch (e) {}
+    if (seen) { boot.remove(); return; }
+
+    const SEQ = [
+      ['DINESH-NET POST v10.0', 'bt-head'],
+      ['Copyright (c) 2014-2026 Dinesh Mekala', 'bt-dim'],
+      ['', ''],
+      ['Detecting network interfaces .......... <span class="bt-ok">[ OK ]</span>', ''],
+      ['Loading routing table (BGP, OSPF) ..... <span class="bt-ok">[ OK ]</span>', ''],
+      ['Initializing firewall cluster ......... <span class="bt-ok">[ OK ]</span>', ''],
+      ['Mounting /cloud/azure ................. <span class="bt-ok">[ OK ]</span>', ''],
+      ['Mounting /cloud/aws ................... <span class="bt-ok">[ OK ]</span>', ''],
+      ['Verifying credentials (6 found) ....... <span class="bt-ok">[ OK ]</span>', ''],
+      ['Bringing up 56 interfaces ............. <span class="bt-ok">[ OK ]</span>', ''],
+      ['', ''],
+      ['System ready. Uptime 10+ years, 0 unplanned outages.', 'bt-ok'],
+    ];
+
+    document.body.style.overflow = 'hidden';
+
+    SEQ.forEach(([txt, cls], i) => {
+      setTimeout(() => {
+        const d = document.createElement('div');
+        if (cls) d.className = cls;
+        d.innerHTML = txt === '' ? '&nbsp;' : txt;
+        lines.appendChild(d);
+      }, i * 105);
+    });
+
+    setTimeout(() => {
+      boot.classList.add('done');
+      setTimeout(() => { boot.hidden = true; boot.remove(); }, 400);
+    }, SEQ.length * 105 + 420);
+
+    // let people skip it
+    boot.addEventListener('click', () => {
+      boot.classList.add('done');
+      setTimeout(() => { boot.hidden = true; boot.remove(); }, 300);
+    });
+  })();
+
+  // ── Boot warning dialog ──────────────────────────────────────
+  (function () {
+    const ov = document.getElementById('sysOverlay');
+    if (!ov) return;
+
+    // Only nag once per browsing session
+    let seen = false;
+    try { seen = sessionStorage.getItem('sysSeen') === '1'; } catch (e) {}
+
+    if (seen) {
+      ov.remove();
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    function dismiss() {
+      ov.classList.add('hide');
+      document.body.style.overflow = '';
+      try { sessionStorage.setItem('sysSeen', '1'); } catch (e) {}
+      setTimeout(() => ov.remove(), 320);
+    }
+
+    ['sysOk', 'sysX', 'sysAbort'].forEach(id => {
+      const b = document.getElementById(id);
+      if (b) b.addEventListener('click', dismiss);
+    });
+
+    // Click the backdrop or hit Escape
+    ov.addEventListener('click', e => { if (e.target === ov) dismiss(); });
+    document.addEventListener('keydown', function esc(e) {
+      if (e.key === 'Escape' || e.key === 'Enter') {
+        dismiss();
+        document.removeEventListener('keydown', esc);
+      }
+    });
+
+    const ok = document.getElementById('sysOk');
+    if (ok) ok.focus();
+  })();
+
+  // ── Interactive shell ────────────────────────────────────────
+  (function () {
+    const box    = document.getElementById('shBox');
+    const body   = document.getElementById('shBody');
+    const out    = document.getElementById('shOut');
+    const input  = document.getElementById('shInput');
+    const prompt = document.getElementById('shPrompt');
+    if (!input) return;
+
+    const EMAIL = 'dineshmmekala@gmail.com';
+    let priv = false;                 // privileged EXEC (enable mode)
+    const hist = [];
+    let hi = -1;
+
+    function line(text, cls) {
+      const d = document.createElement('div');
+      d.className = cls || 'sh-text';
+      d.innerHTML = text;
+      out.appendChild(d);
+    }
+    const blank = () => line('&nbsp;', 'sh-dim');
+    const scroll = () => { body.scrollTop = body.scrollHeight; };
+
+    const CMDS = {
+      help() {
+        line('Available commands:', 'sh-head');
+        blank();
+        [
+          ['help',            'this list'],
+          ['whoami',          'who you are talking to'],
+          ['ipconfig',        'adapter + role summary'],
+          ['show experience', 'full career history'],
+          ['show cert',       'certifications inventory'],
+          ['show skills',     'top interfaces by level'],
+          ['ping',            'reach the inbox'],
+          ['tracert',         'trace the career path'],
+          ['show version',    'uptime and build info'],
+          ['contact',         'email and LinkedIn'],
+          ['resume',          'how to get the CV'],
+          ['clear',           'wipe the screen'],
+        ].forEach(([c, d]) =>
+          line(`  <span class="sh-ok">${c.padEnd(18)}</span><span class="sh-dim">${d}</span>`));
+        blank();
+        line('Hint: there is an easter egg. Old-school gamers know it.', 'sh-dim');
+      },
+
+      whoami() {
+        line('Dinesh Mekala', 'sh-head');
+        line('Network Manager, City of Tallahassee', 'sh-text');
+        line('Sr. Network Architect &mdash; 10+ years', 'sh-text');
+        line('CCIE | PCNSE | PMP | F5 CTS | JNCIS', 'sh-ok');
+        line('Tallahassee, FL', 'sh-dim');
+      },
+
+      ipconfig() {
+        line('Ethernet adapter Career:', 'sh-head');
+        blank();
+        [
+          ['Host Name', 'dinesh'],
+          ['Description', 'Network Manager, City of Tallahassee'],
+          ['Physical Address', 'CC-IE-PC-NS-EP-MP'],
+          ['IPv4 Address', '10.0.0.1 (Preferred)'],
+          ['Default Gateway', 'cloud.azure.net'],
+          ['Lease Obtained', 'Monday, December 1, 2014'],
+          ['Lease Expires', 'Never'],
+        ].forEach(([k, v]) =>
+          line(`  <span class="sh-dim">${(k + ' ').padEnd(22, '.')}:</span> ${v}`));
+      },
+
+      'show experience'() {
+        line('BGP AS-PATH &mdash; 10 hops', 'sh-head');
+        blank();
+        [
+          ['26', 'City of Tallahassee', '2026 - present', 'Network Manager'],
+          ['25', 'CTS Corporation',     '2025 - 2026',    'Sr. Network Security Engineer'],
+          ['24', 'OSF HealthCare',      '2024 - 2025',    'Senior Network Architect'],
+          ['23', 'Arch Technology',     '2023',           'TAAC Support Engineer L5'],
+          ['22', 'Callaway Golf',       '2022 - 2023',    'Sr. Network Engineer / NOC Lead'],
+          ['20', 'AbbVie',              '2020 - 2022',    'Sr. Network Security Engineer'],
+          ['19', 'State of Idaho',      '2019 - 2020',    'Sr. Network Engineer'],
+          ['17', 'Biogen',              '2017 - 2019',    'Sr. Network Security Engineer'],
+          ['16', 'Nielsen',             '2016 - 2017',    'Sr. Network Engineer'],
+          ['14', 'Wipro',               '2014 - 2016',    'Assistant Network Engineer'],
+        ].forEach(([as, co, yr, role]) =>
+          line(`  <span class="sh-ok">${as}</span>  <span class="sh-head">${co.padEnd(21)}</span>` +
+               `<span class="sh-dim">${yr.padEnd(16)}</span>${role}`));
+        blank();
+        line('Full detail: click "experience →" in the header.', 'sh-dim');
+      },
+
+      'show cert'() {
+        line('Credential inventory:', 'sh-head');
+        blank();
+        [
+          ['CCIE',   'Cisco Certified Internetwork Expert', 'Cisco'],
+          ['PCNSE',  'Networks Security Engineer',          'Palo Alto Networks'],
+          ['PMP',    'Project Management Professional',     'PMI'],
+          ['F5 CTS', 'Certified Technology Specialist',     'F5 Networks'],
+          ['JNCIS',  'Networks Certified Specialist',       'Juniper Networks'],
+          ['TWIC',   'Transportation Worker ID',            'TSA'],
+        ].forEach(([c, d, o]) =>
+          line(`  <span class="sh-ok">${c.padEnd(8)}</span><span class="sh-text">${d.padEnd(38)}</span><span class="sh-dim">${o}</span>`));
+        blank();
+        line('6 credential(s) installed, all active.', 'sh-dim');
+      },
+
+      'show skills'() {
+        line('Interfaces at 10G (expert):', 'sh-head');
+        blank();
+        ['BGP / OSPF / EIGRP / MPLS', 'Palo Alto (PCNSE)', 'Cisco Nexus 7K/5K/2K',
+         'Zscaler ZIA / ZPA', 'F5 LTM / GTM', 'Microsoft Azure', 'AWS',
+         'Ansible', 'Cisco ISE', 'SD-WAN', 'Wireshark', 'PCI-DSS']
+          .forEach(k => line(`  <span class="sh-ok">up/up</span>   ${k}`));
+        blank();
+        line('56 interfaces total, 35 at 10G. Full table above.', 'sh-dim');
+      },
+
+      ping() {
+        line(`Pinging ${EMAIL} with 32 bytes of data:`, 'sh-text');
+        line('Reply from inbox: bytes=32 time=1ms TTL=128', 'sh-ok');
+        line('Reply from inbox: bytes=32 time=1ms TTL=128', 'sh-ok');
+        blank();
+        line('Ping statistics: 2 sent, 2 received, 0% loss', 'sh-dim');
+        line(`Host is up. <a href="mailto:${EMAIL}">Open mail client &rarr;</a>`, 'sh-text');
+      },
+
+      tracert() {
+        line('Tracing route to CAREER over a maximum of 10 hops:', 'sh-text');
+        blank();
+        [['1','2014','Wipro'],['2','2016','Nielsen'],['3','2017','Biogen'],
+         ['4','2019','State of Idaho'],['5','2020','AbbVie'],['6','2022','Callaway Golf'],
+         ['7','2023','Arch Technology'],['8','2024','OSF HealthCare'],
+         ['9','2025','CTS Corporation'],['10','2026','City of Tallahassee']]
+          .forEach(([h, y, c], i) =>
+            line(`  ${String(h).padStart(2)}   ${(i+1)}ms   <span class="sh-dim">${y}</span>  ${c}`));
+        blank();
+        line('Trace complete.', 'sh-ok');
+      },
+
+      'show version'() {
+        const s = new Date(2014, 11, 1), n = new Date();
+        let y = n.getFullYear() - s.getFullYear(), m = n.getMonth() - s.getMonth();
+        if (m < 0) { y--; m += 12; }
+        line('Dinesh Mekala, Network Architect Software', 'sh-head');
+        line('Version 10.x, RELEASE PRODUCTION', 'sh-text');
+        blank();
+        line(`System uptime is ${y} years, ${m} months`, 'sh-ok');
+        line('Education: BTech Computer Science, Acharya Nagarjuna University', 'sh-text');
+        line('Last reload reason: new opportunity', 'sh-dim');
+      },
+
+      contact() {
+        line(`Email    <a href="mailto:${EMAIL}">${EMAIL}</a>`, 'sh-text');
+        line('LinkedIn <a href="https://www.linkedin.com/in/dnshm" target="_blank" rel="noopener">linkedin.com/in/dnshm</a>', 'sh-text');
+        line('Location Tallahassee, FL &mdash; open to relocation', 'sh-dim');
+      },
+
+      resume() {
+        line('Resume available on request.', 'sh-text');
+        line(`Send a note to <a href="mailto:${EMAIL}">${EMAIL}</a> and it comes straight back.`, 'sh-dim');
+      },
+
+      clear() { out.innerHTML = ''; },
+
+      enable() {
+        if (priv) { line('Already in privileged EXEC mode.', 'sh-warn'); return; }
+        line('Password: ********', 'sh-dim');
+        line('% Access denied. Nice try though.', 'sh-err');
+        line('Hint: try the Konami code.', 'sh-dim');
+      },
+
+      exit() {
+        if (priv) {
+          priv = false;
+          prompt.textContent = 'dinesh>';
+          prompt.classList.remove('priv');
+          line('Returned to user EXEC mode.', 'sh-dim');
+        } else {
+          line('Already at top level. There is no escape from networking.', 'sh-dim');
+        }
+      },
+    };
+
+    // aliases
+    CMDS['ls'] = CMDS.help;
+    CMDS['?']  = CMDS.help;
+    CMDS['show ip bgp']  = CMDS['show experience'];
+    CMDS['show inventory'] = CMDS['show cert'];
+    CMDS['show interfaces status'] = CMDS['show skills'];
+    CMDS['ifconfig'] = CMDS.ipconfig;
+    CMDS['traceroute'] = CMDS.tracert;
+    CMDS['email'] = CMDS.contact;
+    CMDS['cv'] = CMDS.resume;
+
+    function run(raw) {
+      const cmd = raw.trim().toLowerCase().replace(/\s+/g, ' ');
+      line(`<span class="sh-dim">${prompt.textContent}</span> <span class="sh-echo">${
+        raw.replace(/</g, '&lt;')}</span>`);
+      if (!cmd) { scroll(); return; }
+
+      // allow "ping something" / "tracert something"
+      const base = Object.keys(CMDS)
+        .sort((a, b) => b.length - a.length)
+        .find(k => cmd === k || cmd.startsWith(k + ' '));
+
+      if (base) {
+        CMDS[base]();
+      } else {
+        line(`'${cmd.split(' ')[0].replace(/</g,'&lt;')}' is not recognized as an internal or external command.`, 'sh-err');
+        line("Type 'help' for the list.", 'sh-dim');
+      }
+      blank();
+      scroll();
+    }
+
+    // ── boot banner
+    line('Dinesh Mekala &mdash; Network Architect Shell [Version 10.0]', 'sh-head');
+    line('(c) 2026 Dinesh Mekala. All rights reserved.', 'sh-dim');
+    blank();
+    line("Type <span class='sh-ok'>help</span> to get started.", 'sh-text');
+    blank();
+
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        const v = input.value;
+        if (v.trim()) { hist.push(v); hi = hist.length; }
+        input.value = '';
+        run(v);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (hi > 0) { hi--; input.value = hist[hi]; }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (hi < hist.length - 1) { hi++; input.value = hist[hi]; }
+        else { hi = hist.length; input.value = ''; }
+      } else if (e.key === 'l' && e.ctrlKey) {
+        e.preventDefault();
+        out.innerHTML = '';
+      }
+    });
+
+    // clicking anywhere in the box focuses the prompt
+    box.addEventListener('click', e => {
+      if (e.target.tagName !== 'A') input.focus();
+    });
+
+    // ── Konami code → privileged EXEC
+    const SEQ = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+                 'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let pos = 0;
+    document.addEventListener('keydown', e => {
+      const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      pos = (k === SEQ[pos]) ? pos + 1 : (k === SEQ[0] ? 1 : 0);
+      if (pos !== SEQ.length) return;
+      pos = 0;
+      priv = true;
+      prompt.textContent = 'dinesh#';
+      prompt.classList.add('priv');
+      document.getElementById('shell')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });
+      blank();
+      line('% Privileged EXEC mode enabled.', 'sh-warn');
+      line('dinesh# &mdash; you found it. Respect.', 'sh-ok');
+      line('Fun fact: the PA-6050 cluster at OSF ran 6 nodes and never dropped a session.', 'sh-text');
+      blank();
+      scroll();
+      input.focus();
+    });
+  })();
+
+  // ── Career uptime + status bar telemetry ─────────────────────
+  (function () {
+    const START = new Date(2014, 11, 1);   // Dec 1 2014 — first role at Wipro
+    const up    = document.getElementById('uptime');
+    const clock = document.getElementById('sbClock');
+    const pkts  = document.getElementById('sbPkts');
+    const cpu   = document.getElementById('sbCpu');
+
+    let packets = 4182;
+
+    function tick() {
+      const now = new Date();
+
+      if (up) {
+        let y = now.getFullYear() - START.getFullYear();
+        let m = now.getMonth()    - START.getMonth();
+        let d = now.getDate()     - START.getDate();
+        if (d < 0) { m--; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+        if (m < 0) { y--; m += 12; }
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        up.textContent =
+          `${y} years, ${m} months, ${d} days, ${hh}:${mm}:${ss}`;
+      }
+
+      if (clock) {
+        clock.textContent = now.toLocaleTimeString([], { hour12: false });
+      }
+
+      if (pkts) {
+        packets += Math.floor(Math.random() * 7) + 1;
+        pkts.textContent = packets.toLocaleString();
+      }
+
+      if (cpu && Math.random() < 0.25) {
+        cpu.textContent = (Math.floor(Math.random() * 6) + 2) + '%';
+      }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ── Email button → ping terminal, then opens mail client ─────
+  (function () {
+    const EMAIL = 'dineshmmekala@gmail.com';
+    const ov    = document.getElementById('pingOverlay');
+    const cmdEl = document.getElementById('pingCmd');
+    const caret = document.getElementById('pingCaret');
+    const outEl = document.getElementById('pingOut');
+    const xBtn  = document.getElementById('pingX');
+    if (!ov) return;
+
+    const LINE  = 'ping ' + EMAIL;
+    const REPLY = [
+      { t: `Pinging ${EMAIL} with 32 bytes of data:`, c: '' },
+      { t: 'Reply from inbox: bytes=32 time=1ms TTL=128', c: 'ok' },
+      { t: 'Reply from inbox: bytes=32 time=1ms TTL=128', c: 'ok' },
+      { t: '', c: '' },
+      { t: 'Ping statistics: 2 sent, 2 received, 0% loss', c: 'dim' },
+      { t: 'Host is up. Opening your mail client...', c: 'ok' },
+    ];
+
+    let typing = null;
+
+    function reset() {
+      cmdEl.textContent = '';
+      outEl.innerHTML = '';
+      caret.style.display = '';
+      if (typing) clearInterval(typing);
+    }
+
+    function run() {
+      reset();
+      let i = 0;
+      typing = setInterval(() => {
+        cmdEl.textContent += LINE[i++];
+        if (i < LINE.length) return;
+        clearInterval(typing);
+        caret.style.display = 'none';
+
+        REPLY.forEach((r, idx) => {
+          const d = document.createElement('div');
+          if (r.c) d.className = r.c;
+          d.innerHTML = r.t === '' ? '&nbsp;' : r.t;
+          outEl.appendChild(d);
+          setTimeout(() => d.classList.add('vis'), idx * 260 + 120);
+        });
+
+        // Offer the mail link, and try to open the client
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.className = 'ping-mail';
+          a.href = 'mailto:' + EMAIL;
+          a.textContent = '> open mail client';
+          outEl.appendChild(a);
+          requestAnimationFrame(() => a.classList.add('vis'));
+          try { window.location.href = 'mailto:' + EMAIL; } catch (e) {}
+        }, REPLY.length * 260 + 350);
+      }, 55);
+    }
+
+    function open(e) {
+      if (e) e.preventDefault();
+      ov.hidden = false;
+      requestAnimationFrame(() => ov.classList.add('show'));
+      document.body.style.overflow = 'hidden';
+      xBtn.focus();
+      run();
+    }
+
+    function shut() {
+      ov.classList.remove('show');
+      document.body.style.overflow = '';
+      if (typing) clearInterval(typing);
+      setTimeout(() => { ov.hidden = true; reset(); }, 240);
+    }
+
+    document.querySelectorAll('.js-ping').forEach(b =>
+      b.addEventListener('click', open));
+
+    xBtn.addEventListener('click', shut);
+    ov.addEventListener('click', e => { if (e.target === ov) shut(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !ov.hidden) shut();
+    });
+  })();
+
+  // ── Experience modal ─────────────────────────────────────────
+  (function () {
+    const ov    = document.getElementById('expOverlay');
+    const close = document.getElementById('expClose');
+    const more  = document.getElementById('moreBtn');
+    const rest  = document.getElementById('moreJobs');
+    if (!ov) return;
+
+    let lastFocus = null;
+
+    function open(e) {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      ov.hidden = false;
+      requestAnimationFrame(() => ov.classList.add('show'));
+      document.body.style.overflow = 'hidden';
+      close.focus();
+    }
+
+    function shut() {
+      ov.classList.remove('show');
+      document.body.style.overflow = '';
+      setTimeout(() => { ov.hidden = true; }, 260);
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.querySelectorAll('.js-exp').forEach(b =>
+      b.addEventListener('click', open));
+
+    close.addEventListener('click', shut);
+    ov.addEventListener('click', e => { if (e.target === ov) shut(); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !ov.hidden) shut();
+    });
+
+    // "more" reveals the 5 earlier roles
+    if (more && rest) {
+      more.addEventListener('click', () => {
+        const open = rest.classList.toggle('open');
+        more.setAttribute('aria-expanded', open ? 'true' : 'false');
+        more.innerHTML = open
+          ? '<span class="more-caret">▼</span> hide earlier roles'
+          : '<span class="more-caret">▼</span> more — 5 earlier roles (2014 – 2022)';
+      });
+    }
+  })();
+
+  // ── Experience: one cmd window per role ──────────────────────
+  // Open with a click, or focus a window and press Enter / Y.
+  // Escape closes the focused window.
+  (function () {
+    const terms = document.querySelectorAll('.job-term');
+
+    function setOpen(term, open) {
+      term.classList.toggle('open', open);
+      term.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const ask = term.querySelector('.job-ask');
+      if (ask) {
+        ask.innerHTML = open
+          ? 'View full log? [<b>Y</b>/N] y'
+          : 'View full log? [<b>Y</b>/N] <span class="job-caret">\u2588</span>';
+      }
+    }
+
+    terms.forEach(term => {
+      term.addEventListener('click', () => {
+        setOpen(term, !term.classList.contains('open'));
+      });
+
+      term.addEventListener('keydown', e => {
+        const k = e.key.toLowerCase();
+        if (k === 'enter' || k === ' ' || k === 'y') {
+          e.preventDefault();
+          setOpen(term, k === 'y' ? true : !term.classList.contains('open'));
+        } else if (k === 'n' || k === 'escape') {
+          e.preventDefault();
+          setOpen(term, false);
+        }
+      });
+    });
+  })();
+
+  // ── Link fallbacks (works even inside sandboxed preview panes) ──
+
+  // Toast helper
+  function toast(msg) {
+    let el = document.getElementById('toast');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'toast';
+      el.style.cssText =
+        'position:fixed;bottom:28px;left:50%;transform:translateX(-50%);' +
+        'background:#0a1a0a;border:1px solid #00ff41;color:#00ff41;' +
+        'font-family:monospace;font-size:13px;padding:10px 18px;border-radius:6px;' +
+        'z-index:999;box-shadow:0 0 20px rgba(0,255,65,0.25);opacity:0;' +
+        'transition:opacity .25s;pointer-events:none;';
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.style.opacity = '1';
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.style.opacity = '0'; }, 2200);
+  }
+
+  // External links — force a real new tab/window
+  document.querySelectorAll('.js-ext').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const url = a.getAttribute('href');
+      const w = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!w) {
+        // Popup blocked — try top-level navigation, then fall back to copy
+        try {
+          window.top.location.href = url;
+        } catch (err) {
+          navigator.clipboard?.writeText(url);
+          toast('Link copied: ' + url);
+        }
+      }
+    });
+  });
+
+  // Email — try mail client, fall back to copying the address
+  document.querySelectorAll('.js-email').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const email = a.dataset.email;
+      let opened = false;
+      try {
+        window.location.href = 'mailto:' + email;
+        opened = true;
+      } catch (err) { /* no mail client */ }
+
+      // If nothing happened after a moment, copy the address instead
+      setTimeout(() => {
+        if (!document.hidden) {
+          navigator.clipboard?.writeText(email)
+            .then(() => toast('Email copied: ' + email))
+            .catch(() => toast(email));
+        }
+      }, 700);
+    });
+  });
+</script>
+</body>
+</html>
